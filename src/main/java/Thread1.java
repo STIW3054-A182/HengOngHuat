@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
 
+import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -12,24 +13,40 @@ import javafx.util.Pair;
 
 import java.util.concurrent.Callable;
 
-public class Thread1 implements Callable<Integer>{
-    String link,cat;
+public class Thread1 implements Callable<Vector>{
+    String link,cat,result;
     int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan,i,sum;
     final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR","JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
     int total =0;
-
+    int totalKL =0;
+    //Integer subTotal[];
+    public static Vector<Integer> subTotal = new Vector<Integer>();
     public Thread1(String link){
 
         this.link=link;
     }
 
-    public Integer call() throws Exception {
+    public Vector<Integer> call() throws Exception {
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
         try {
                 if (valid2(link)) {
                     if (getTwo(link)!=null){
+                       subTotal.add(kl);
+                        subTotal.add(ns);
+                        subTotal.add(pp);
+                        subTotal.add(pahang);
+                        subTotal.add(ptrjaya);
+                        subTotal.add(perak);
+                        subTotal.add(selangor);
+                        subTotal.add(johor);
+                        subTotal.add(kedah);
+                        subTotal.add(sarawak);
+                        subTotal.add(sabah);
+                        subTotal.add(melaka);
+                        subTotal.add(kelantan);
+
                        if (kl >0 ) {
                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[0],cat.replace("(", "").replace(")", ""),kl);
                              }
@@ -69,6 +86,8 @@ public class Thread1 implements Callable<Integer>{
                         if (kelantan > 0) {
                             System.out.printf("| %-12s | %-8s | %-6d|\n",state[12],cat.replace("(", "").replace(")", ""),kelantan);
                             }
+
+
                         }
 
                             }
@@ -77,7 +96,7 @@ public class Thread1 implements Callable<Integer>{
 
            e.printStackTrace();
        }
-        return total;
+        return subTotal;
 
     }
 

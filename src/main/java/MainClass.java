@@ -13,7 +13,21 @@ public class MainClass {
     public static Vector<String> existList = new Vector<String>();
     public static String [] existLinkList;
     public static Vector<Integer> total = new Vector<Integer>();
-    public static Integer [] stateTotalList;
+    public static Vector<Integer> stateTotal = new Vector<Integer>();
+    public static Vector<Integer> stateKLTotal = new Vector<Integer>();
+    public static Vector<Integer> stateNSTotal = new Vector<Integer>();
+    public static Vector<Integer> statePPTotal = new Vector<Integer>();
+    public static Vector<Integer> statePHGTotal = new Vector<Integer>();
+    public static Vector<Integer> statePTRTotal = new Vector<Integer>();
+    public static Vector<Integer> statePRTotal = new Vector<Integer>();
+    public static Vector<Integer> stateSLGTotal = new Vector<Integer>();
+    public static Vector<Integer> stateJHTotal = new Vector<Integer>();
+    public static Vector<Integer> stateKDTotal = new Vector<Integer>();
+    public static Vector<Integer> stateSRWTotal = new Vector<Integer>();
+    public static Vector<Integer> stateSBTotal = new Vector<Integer>();
+    public static Vector<Integer> stateMLKTotal = new Vector<Integer>();
+    public static Vector<Integer> stateKLTTotal = new Vector<Integer>();
+
 
 
     public static void main (String[] args) throws IOException {
@@ -54,70 +68,126 @@ public class MainClass {
        for (int a=0;a<existList.size();a++){
 
             Thread1 link1 = new Thread1(existLinkList[a]);
-            Future<Integer> future2= service.submit(link1);
+            FutureTask<Vector> future2;
+           future2 = (FutureTask<Vector>) service.submit(link1);
 
-        try {
-            if (future2.get()>0) {
-                int stateTotal = future2.get();
-                total.add(stateTotal);
+           try {
+            if (future2.get()!=null) {
+                stateTotal = future2.get();
             }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
     }
-        stateTotalList = new Integer[total.size()];
-        total.copyInto(stateTotalList);
+
+
+        for (int getkl=0;getkl<120;getkl++) {
+            stateKLTotal.add(stateTotal.get(getkl));
+            stateNSTotal.add(stateTotal.get(getkl+1));
+            statePPTotal.add(stateTotal.get(getkl+2));
+            statePHGTotal.add(stateTotal.get(getkl+3));
+            statePTRTotal.add(stateTotal.get(getkl+4));
+            statePRTotal.add(stateTotal.get(getkl+5));
+            stateSLGTotal.add(stateTotal.get(getkl+6));
+            stateJHTotal.add(stateTotal.get(getkl+7));
+            stateKDTotal.add(stateTotal.get(getkl+8));
+            stateSRWTotal.add(stateTotal.get(getkl+9));
+            stateSBTotal.add(stateTotal.get(getkl+10));
+            stateMLKTotal.add(stateTotal.get(getkl+11));
+            stateKLTTotal.add(stateTotal.get(getkl+12));
+            getkl+=12;
+        }
+
+        int grandTotalKL=0;
+        for (Integer totalOfStateNS: stateKLTotal){
+            grandTotalKL+=totalOfStateNS;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalKL);
+
+        int grandTotalNS=0;
+        for (Integer totalOfStateNS: stateNSTotal){
+            grandTotalNS+=totalOfStateNS;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalNS);
+        int grandTotalPP=0;
+        for (Integer totalOfStatePP: statePPTotal){
+            grandTotalPP+=totalOfStatePP;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPP);
+
+        int grandTotalPHG=0;
+        for (Integer totalOfStatePHG: statePHGTotal){
+            grandTotalPHG+=totalOfStatePHG;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPHG);
+
+        int grandTotalPTR=0;
+        for (Integer totalOfStatePTR: statePTRTotal){
+            grandTotalPTR+=totalOfStatePTR;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPTR);
+
+        int grandTotalPR=0;
+        for (Integer totalOfStatePR: statePRTotal){
+            grandTotalPR+=totalOfStatePR;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPR);
+
+        int grandTotalSLG=0;
+        for (Integer totalOfStateSLG: stateSLGTotal){
+            grandTotalSLG+=totalOfStateSLG;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalSLG);
+
+        int grandTotalJH=0;
+        for (Integer totalOfStateJH: stateJHTotal){
+            grandTotalJH+=totalOfStateJH;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalJH);
+
+        int grandTotalKD=0;
+        for (Integer totalOfStateKD: stateKDTotal){
+            grandTotalKD+=totalOfStateKD;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalKD);
+
+        int grandTotalSRW=0;
+        for (Integer totalOfStateSRW: stateSRWTotal){
+            grandTotalSRW+=totalOfStateSRW;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalSRW);
+
+        int grandTotalSB=0;
+        for (Integer totalOfStateSB: stateSBTotal){
+            grandTotalSB+=totalOfStateSB;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalSB);
+
+        int grandTotalMLK=0;
+        for (Integer totalOfStateMLK: stateMLKTotal){
+            grandTotalMLK+=totalOfStateMLK;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalMLK);
+
+        int grandTotalKLT=0;
+        for (Integer totalOfStateKLT: stateKLTTotal){
+            grandTotalKLT+=totalOfStateKLT;
+        }
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalKLT);
+
+
         int grandTotal=0;
-        for (Integer totalOfState: stateTotalList){
+        for (Integer totalOfState: stateTotal){
             grandTotal+=totalOfState;
         }
-      System.out.printf("| %-12s | %-8s | %-6d|\n","GRAND TOTAL","",grandTotal);
+        System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotal);
+
 
         //===============================================================================================================================================
 
-        
-       /* for (int a=0;a<existList.size();a++){
-
-            //Thread1 link1 = new Thread1(existLinkList[a]);
-            FutureTask<Integer> future2= new FutureTask(new Thread1(existLinkList[a]));
-                    service.submit(future2);
-
-            try {
-                if (future2.get()>0) {
-                    for(int v =0; v<13;v++) {
-
-                       Integer stateTotal = future2.get();
-                        total.add(stateTotal);
-                    }
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
-                e.printStackTrace();
-            }
-        }
-        stateTotalList = new Integer[total.size()];
-        total.copyInto(stateTotalList);
-        int totalKL=0;
-        for (Integer totalOfState: stateTotalList){
-
-            // System.out.println("total : "+totalOfState);
-            totalKL+=totalOfState;
-        }
-        // System.out.println("|               |     TOTAL     |     "+totalKL+"     |");
-        // System.out.printf("| %-8s | %-5d |\n",cat.replace("(", "").replace(")", ""),row);
-        System.out.printf("| %-12s | %-8s | %-5d |\n","","TOTAL",totalKL);
-        */
-
-        //System.out.println("total : "+totalKL);
-
-      /*     Thread thread = new Thread(new CheckURLs(line.get(a)));
-                service.execute(thread);
-            Thread thread2 = new Thread(new Thread1(line.get(a)));
-                service.execute(thread2);
-        }*/
         try {
         service.shutdown();
             if (!service.awaitTermination(60, TimeUnit.SECONDS)) { //wait for existing tasks to terminate
