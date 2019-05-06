@@ -1,27 +1,50 @@
 package groupProject;
 
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.Properties;
+import java.util.concurrent.*;
 
 public class MainClass {
+
     public static void main (String[] args) throws IOException {
 
+        String path, fileName;
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
-        Path path = Paths.get("C:\\Users\\user\\Desktop\\URL.txt");
+        PropertyFileWriting obj = new PropertyFileWriting();
+        Properties write = obj.setProperties();
+        path = write.getProperty("path");
+        fileName = write.getProperty("txtFile");
+        System.out.println("Path: " + path);
+        System.out.println("FileName: " + fileName);
+
+        Path path1 = Paths.get("C:\\Users\\user\\Desktop\\URL.txt");
         List<String> line = null;
-        line = Files.readAllLines(path);
+        line = Files.readAllLines(path1);
+
         System.out.println("**************************** DISPLAY VALID LINKS ****************************");
+        new FileWriter("myLogFile.log", false); //overwrites file
         for (int a = 0; a < line.size(); a++) {
-            Thread thread = new Thread(new CheckUrls(line.get(a)));
-            service.execute(thread);
+            CheckUrls link1 = new CheckUrls(line.get(a));
+            Future<String> future = service.submit(link1);
+
+            try {
+                if (future.get() != null) {
+                    //validLink = future.get();
+                    Thread thread = new Thread();
+                    service.execute(thread);
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
         }
 
         service.shutdown();
