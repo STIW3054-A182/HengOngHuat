@@ -5,6 +5,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.Vector;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -14,42 +15,55 @@ import javafx.util.Pair;
 import java.util.concurrent.Callable;
 
 public class Thread1 implements Callable<Vector>{
-    String link,cat,result;
-    int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan,i,sum;
+    String link,cat;
+    int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan;
     final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR","JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
-    int total =0;
-    int totalKL =0;
-    //Integer subTotal[];
-    public static Vector<Integer> subTotal = new Vector<Integer>();
+    public static Vector<Pair<Integer,String>> subTotal = new Vector<Pair<Integer,String>>();
+
+
     public Thread1(String link){
 
         this.link=link;
     }
 
-    public Vector<Integer> call() throws Exception {
+    public Vector<Pair<Integer,String>> call() throws Exception {
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
         try {
                 if (valid2(link)) {
                     if (getTwo(link)!=null){
-                       subTotal.add(kl);
-                        subTotal.add(ns);
-                        subTotal.add(pp);
-                        subTotal.add(pahang);
-                        subTotal.add(ptrjaya);
-                        subTotal.add(perak);
-                        subTotal.add(selangor);
-                        subTotal.add(johor);
-                        subTotal.add(kedah);
-                        subTotal.add(sarawak);
-                        subTotal.add(sabah);
-                        subTotal.add(melaka);
-                        subTotal.add(kelantan);
+                        Pair p1=new Pair(kl,cat);
+                        Pair p2=new Pair(ns,cat);
+                        Pair p3=new Pair(pp,cat);
+                        Pair p4=new Pair(pahang,cat);
+                        Pair p5=new Pair(ptrjaya,cat);
+                        Pair p6=new Pair(perak,cat);
+                        Pair p7=new Pair(selangor,cat);
+                        Pair p8=new Pair(johor,cat);
+                        Pair p9=new Pair(kedah,cat);
+                        Pair p10=new Pair(sarawak,cat);
+                        Pair p11=new Pair(sabah,cat);
+                        Pair p12=new Pair(melaka,cat);
+                        Pair p13=new Pair(kelantan,cat);
+                        subTotal.add(p1);
+                        subTotal.add(p2);
+                        subTotal.add(p3);
+                        subTotal.add(p4);
+                        subTotal.add(p5);
+                        subTotal.add(p6);
+                        subTotal.add(p7);
+                        subTotal.add(p8);
+                        subTotal.add(p9);
+                        subTotal.add(p10);
+                        subTotal.add(p11);
+                        subTotal.add(p12);
+                        subTotal.add(p13);
 
-                       if (kl >0 ) {
-                           System.out.printf("| %-12s | %-8s | %-6d|\n",state[0],cat.replace("(", "").replace(")", ""),kl);
-                             }
+
+                      /*  if (kl >0 ) {
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[1],cat.replace("(", "").replace(")", ""),kl);
+                        }
                       if (ns >0 ) {
                             System.out.printf("| %-12s | %-8s | %-6d|\n",state[1],cat.replace("(", "").replace(")", ""),ns);
                              }
@@ -86,18 +100,20 @@ public class Thread1 implements Callable<Vector>{
                         if (kelantan > 0) {
                             System.out.printf("| %-12s | %-8s | %-6d|\n",state[12],cat.replace("(", "").replace(")", ""),kelantan);
                             }
+                            */
+
 
 
                         }
 
                             }
 
+
        } catch (Exception e) {
 
            e.printStackTrace();
        }
         return subTotal;
-
     }
 
     public boolean valid2(String url) {
@@ -132,6 +148,7 @@ public class Thread1 implements Callable<Vector>{
                                     int scrape = title.indexOf("9");
                                     String category = title.substring(scrape + 1);
                                     cat = category;
+
                                 }
                                 break;
 
@@ -256,9 +273,7 @@ public class Thread1 implements Callable<Vector>{
                                 break;
 
                         }
-
         }
-                total=+total+kl+ns+pp+pahang+ptrjaya+perak+selangor+johor+kedah+sarawak+sabah+melaka+kelantan;
 
             } catch (Exception e) {
                 e.printStackTrace();
