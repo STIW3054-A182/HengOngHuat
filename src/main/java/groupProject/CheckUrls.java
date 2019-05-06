@@ -20,6 +20,8 @@ public class CheckUrls implements Callable<String> {
         String date = new Date().toString();
         String logFile = "myLogFile.log";
         File file = new File(logFile);
+        FileWriter fw;
+        BufferedWriter bw;
 
         try {
             startTime = System.currentTimeMillis();
@@ -30,7 +32,12 @@ public class CheckUrls implements Callable<String> {
                 System.out.println("Execution time in milliseconds: " + executeTime);
                 if (executeTime > 1000) {
                     System.exit(0);
-                    new FileWriter("myLogFile.log", true); //the terminated link appends to file
+                    fw = new FileWriter("myLogFile.log", true); //the terminated link appends to file
+                    bw = new BufferedWriter(fw);
+                    bw.write(date + "\t");
+                    bw.write(Thread.currentThread().getName() + " --> " + line + " (not exist)");
+                    bw.write("Execution time in milliseconds: " + executeTime);
+                    bw.close();
                 }
                 link = line;
             } else {
@@ -38,8 +45,8 @@ public class CheckUrls implements Callable<String> {
                     endTime = System.currentTimeMillis();
                     executeTime = endTime - startTime;
 
-                    FileWriter fw = new FileWriter(file, true); //appends to file
-                    BufferedWriter bw = new BufferedWriter(fw);
+                    fw = new FileWriter(file, true); //appends to file
+                    bw = new BufferedWriter(fw);
                     bw.write(date + "\t");
                     bw.write(Thread.currentThread().getName() + " --> " + line + " (not exist)");
                     bw.write(System.lineSeparator());
