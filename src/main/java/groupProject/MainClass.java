@@ -14,6 +14,7 @@ public class MainClass {
     public static void main (String[] args) throws IOException {
 
         String path, fileName;
+
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
@@ -24,7 +25,7 @@ public class MainClass {
         System.out.println("Path: " + path);
         System.out.println("FileName: " + fileName);
 
-        Path path1 = Paths.get("C:\\Users\\user\\Desktop\\URL.txt");
+        Path path1 = Paths.get("C:\\Users\\user\\Desktop\\URL.txt"); //change your path
         List<String> line = null;
         line = Files.readAllLines(path1);
 
@@ -33,7 +34,6 @@ public class MainClass {
         for (int a = 0; a < line.size(); a++) {
             CheckUrls link1 = new CheckUrls(line.get(a));
             Future<String> future = service.submit(link1);
-
             try {
                 if (future.get() != null) {
                     //validLink = future.get();

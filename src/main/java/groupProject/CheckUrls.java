@@ -16,31 +16,38 @@ public class CheckUrls implements Callable<String> {
 
     @Override
     public String call() {
+        long startTime, endTime, executeTime;
         String date = new Date().toString();
         String logFile = "myLogFile.log";
         File file = new File(logFile);
 
         try {
+            startTime = System.currentTimeMillis();
             if (validUrl(line)) {
                 System.out.println(Thread.currentThread().getName() + " --> " + line);
+                endTime = System.currentTimeMillis();
+                executeTime = endTime - startTime;
+                System.out.println("Execution time in milliseconds: " + executeTime);
+                if (executeTime > 1000) {
+                    System.exit(0);
+                    new FileWriter("myLogFile.log", true); //the terminated link appends to file
+                }
                 link = line;
             } else {
                 try {
-                    if (!file.exists()) {
-                        System.out.println("We had to make a new log file.");
-                        file.createNewFile();
-                    }
+                    endTime = System.currentTimeMillis();
+                    executeTime = endTime - startTime;
 
                     FileWriter fw = new FileWriter(file, true); //appends to file
                     BufferedWriter bw = new BufferedWriter(fw);
                     bw.write(date + "\t");
-                    bw.append(Thread.currentThread().getName() + " --> " + line + " (not exist)");
-                    bw.append(System.lineSeparator());
+                    bw.write(Thread.currentThread().getName() + " --> " + line + " (not exist)");
+                    bw.write(System.lineSeparator());
+                    bw.write("Execution time in milliseconds: " + executeTime);
+                    bw.write(System.lineSeparator());
                     bw.close();
-                } catch (SecurityException se) {
+                } catch (SecurityException | IOException se) {
                     se.printStackTrace();
-                } catch (IOException ie) {
-                    ie.printStackTrace();
                 }
             }
         } catch (Exception e) {
@@ -49,7 +56,7 @@ public class CheckUrls implements Callable<String> {
         return link;
     }
 
-    public boolean validUrl(String link) {
+    private boolean validUrl(String link) {
         try {
             HttpURLConnection.setFollowRedirects(true);
             HttpURLConnection checkUrl = (HttpURLConnection) new URL(link).openConnection();
