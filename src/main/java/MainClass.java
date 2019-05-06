@@ -3,30 +3,21 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
+import java.util.Vector;
+import java.util.concurrent.*;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
 import java.lang.String;
-import java.util.concurrent.ExecutionException;
 
 public class MainClass {
-    public static String validLink;
+
+    public static Vector<String> existList = new Vector<String>();
+    public static String [] existLinkList;
+    public static Vector<Integer> total = new Vector<Integer>();
+    public static Integer [] stateTotalList;
+
+
     public static void main (String[] args) throws IOException {
 
-        /*  DisplayStatistic kl = new DisplayStatistic();
-        Future<Integer> future = executorService.submit(kl);
-
-        try {
-            bilPerak[i]=future.get();
-            System.out.println("|     Perak     |                  |       " + bilPerak[i]+"       |");
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        }*/
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
@@ -34,33 +25,101 @@ public class MainClass {
         List<String> line = null;
         line = Files.readAllLines(path);
         System.out.println("**************************** DISPLAY VALID LINKS ****************************");
-        for (int a = 0; a < line.size(); a++) {
-            CheckURLs link1 =new CheckURLs(line.get(a));
+
+        for (int a=0; a<line.size();a++) {
+
+            CheckURLs link1 = new CheckURLs(line.get(a));
             Future<String> future = service.submit(link1);
             try {
-                if (future.get()!=null) {
-                    validLink=future.get();
-                    Thread thread2 = new Thread(new Thread1(validLink));
-                    service.execute(thread2);
-                   // System.out.println("Valid link: "+future.get());
+                if (future.get() != null) {
+                    String existLink = future.get();
+                    existList.add(existLink);
                 }
-            }catch (InterruptedException e) {
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
-
-           /* Thread thread = new Thread(new CheckURLs(line.get(a)));
-                service.execute(thread);
-
-
-            Thread thread2 = new Thread(new Thread1(line.get(a)));
-                service.execute(thread2);*/
         }
+        existLinkList = new String[existList.size()];
+        existList.copyInto(existLinkList);
+        for (String link2: existLinkList){
+            System.out.println("Valid Link: "+link2);
+        }
+     // ==============================================================================================================================
 
 
-        service.shutdown();
+        System.out.printf("| %-12s | %-8s | %-6s|\n","State","Category","Total");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+       for (int a=0;a<existList.size();a++){
+
+            Thread1 link1 = new Thread1(existLinkList[a]);
+            Future<Integer> future2= service.submit(link1);
+
         try {
+            if (future2.get()>0) {
+                int stateTotal = future2.get();
+                total.add(stateTotal);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+    }
+        stateTotalList = new Integer[total.size()];
+        total.copyInto(stateTotalList);
+        int grandTotal=0;
+        for (Integer totalOfState: stateTotalList){
+            grandTotal+=totalOfState;
+        }
+      System.out.printf("| %-12s | %-8s | %-6d|\n","GRAND TOTAL","",grandTotal);
+
+        //===============================================================================================================================================
+
+        
+       /* for (int a=0;a<existList.size();a++){
+
+            //Thread1 link1 = new Thread1(existLinkList[a]);
+            FutureTask<Integer> future2= new FutureTask(new Thread1(existLinkList[a]));
+                    service.submit(future2);
+
+            try {
+                if (future2.get()>0) {
+                    for(int v =0; v<13;v++) {
+
+                       Integer stateTotal = future2.get();
+                        total.add(stateTotal);
+                    }
+                }
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+        stateTotalList = new Integer[total.size()];
+        total.copyInto(stateTotalList);
+        int totalKL=0;
+        for (Integer totalOfState: stateTotalList){
+
+            // System.out.println("total : "+totalOfState);
+            totalKL+=totalOfState;
+        }
+        // System.out.println("|               |     TOTAL     |     "+totalKL+"     |");
+        // System.out.printf("| %-8s | %-5d |\n",cat.replace("(", "").replace(")", ""),row);
+        System.out.printf("| %-12s | %-8s | %-5d |\n","","TOTAL",totalKL);
+        */
+
+        //System.out.println("total : "+totalKL);
+
+      /*     Thread thread = new Thread(new CheckURLs(line.get(a)));
+                service.execute(thread);
+            Thread thread2 = new Thread(new Thread1(line.get(a)));
+                service.execute(thread2);
+        }*/
+        try {
+        service.shutdown();
             if (!service.awaitTermination(60, TimeUnit.SECONDS)) { //wait for existing tasks to terminate
                 service.shutdownNow(); //cancel currently executing task
                 if (!service.awaitTermination(60, TimeUnit.SECONDS)) { //wait for tasks to respond to being cancelled
@@ -73,4 +132,7 @@ public class MainClass {
         }
 
     }
+
+
+
 }

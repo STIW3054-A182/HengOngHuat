@@ -3,7 +3,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
@@ -12,12 +11,13 @@ import java.util.concurrent.Callable;
 
 public class CheckURLs implements Callable<String>{
 
-    private String link;
+    private String validLink;
     private String line;
     //if a Logger with that name already exists, then that Logger is returned; otherwise, a new Logger is created
     Logger logger = Logger.getLogger("MyLog");
 
     public CheckURLs(String line) {
+
         this.line = line;
     }
 
@@ -25,19 +25,21 @@ public class CheckURLs implements Callable<String>{
     public String call() throws Exception {
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
+
         try {
             if (validUrl(line)) {
-                System.out.println(Thread.currentThread().getName() + " --> " + line);
-                link=line;
+                //System.out.println(Thread.currentThread().getName() + " --> " + line);
+                validLink =line;
             } else {
                 try {
                     //this block configure the logger with handler and formatter
                     FileHandler fh = new FileHandler("myLogFile.log");
-                    logger.addHandler(fh);
+                   logger.addHandler(fh);
+
                     SimpleFormatter formatter = new SimpleFormatter();
                     fh.setFormatter(formatter);
 
-                    //used to log the invalid url link
+                    //used to log the invalid url existLink
                     logger.info(Thread.currentThread().getName() + " --> " + line + " (not exist)");
                 } catch (SecurityException se) {
                     se.printStackTrace();
@@ -49,32 +51,9 @@ public class CheckURLs implements Callable<String>{
             e.printStackTrace();
         }
 
-        return link;
+        return validLink;
     }
-   /* public void run() {
-        try {
-            if (validUrl(line)) {
-                System.out.println(Thread.currentThread().getName() + " --> " + line);
-            } else {
-                try {
-                    //this block configure the logger with handler and formatter
-                    FileHandler fh = new FileHandler("myLogFile.log");
-                    logger.addHandler(fh);
-                    SimpleFormatter formatter = new SimpleFormatter();
-                    fh.setFormatter(formatter);
 
-                    //used to log the invalid url link
-                    logger.info(Thread.currentThread().getName() + " --> " + line + " (not exist)");
-                } catch (SecurityException se) {
-                    se.printStackTrace();
-                } catch (IOException ie) {
-                    ie.printStackTrace();
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }*/
 
     private boolean validUrl(String link) {
         try {
@@ -87,3 +66,4 @@ public class CheckURLs implements Callable<String>{
         }
     }
 }
+

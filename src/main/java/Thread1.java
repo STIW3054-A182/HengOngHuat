@@ -12,119 +12,75 @@ import javafx.util.Pair;
 
 import java.util.concurrent.Callable;
 
-public class Thread1 implements Runnable{
+public class Thread1 implements Callable<Integer>{
     String link,cat;
-    int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan,i, total,sum;
-    String result;
+    int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan,i,sum;
     final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR","JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
-    int KL,NS,PP,PHG,PTJ,PR,SLG,JH,KD,SRW,SB,MLK,KLT;
-    int [] totalKL = {0,0,0,0,0,0,0,0,0,0};
-    int [] totalPERAK = {0,0,0,0,0,0,0,0,0,0};
+    int total =0;
 
     public Thread1(String link){
+
         this.link=link;
     }
 
-    public void run(){
-            ExecutorService executorService = Executors.newCachedThreadPool();
+    public Integer call() throws Exception {
+        int coreCount = Runtime.getRuntime().availableProcessors();
+        ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
         try {
-            //if(valid(link)) {
                 if (valid2(link)) {
                     if (getTwo(link)!=null){
-                        Pair p1 = new Pair(kl, cat);
-                        Pair p2 = new Pair(ns, cat);
-                        Pair p3 = new Pair(pp, cat);
-                        Pair p4 = new Pair(pahang, cat);
-                        Pair p5 = new Pair(ptrjaya, cat);
-                        Pair p6 = new Pair(perak, cat);
-                        Pair p7 = new Pair(selangor, cat);
-                        Pair p8 = new Pair(johor, cat);
-                        Pair p9 = new Pair(kedah, cat);
-                        Pair p10 = new Pair(sarawak, cat);
-                        Pair p11 = new Pair(sabah, cat);
-                        Pair p12 = new Pair(melaka, cat);
-                        Pair p13 = new Pair(kelantan, cat);
-                        if (kl >0 ) {
-                                System.out.println("|  KUALA LUMPUR |     " + p1.getValue() + "     |       " + p1.getKey() + "       |");
+                       if (kl >0 ) {
+                           System.out.printf("| %-12s | %-8s | %-6d|\n",state[0],cat.replace("(", "").replace(")", ""),kl);
                              }
-                      /**/  if (ns >0 ) {
-                                System.out.println("|  N.SEMBILAN   |     " + p2.getValue() + "     |       " + p2.getKey() + "       |");
+                      if (ns >0 ) {
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[1],cat.replace("(", "").replace(")", ""),ns);
                              }
                         if (pp >0 ) {
-                                System.out.println("|  PULAU PINANG |     " + p3.getValue() + "     |       " + p3.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[2],cat.replace("(", "").replace(")", ""),pp);
                              }
                         if (pahang >0 ) {
-                                System.out.println("|     PAHANG    |     " + p4.getValue() + "     |       " + p4.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[3],cat.replace("(", "").replace(")", ""),pahang);
                             }
                         if (ptrjaya >0 ) {
-                                System.out.println("|   PUTRAJAYA   |     " + p5.getValue() + "     |       " + p5.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[4],cat.replace("(", "").replace(")", ""),ptrjaya);
                              }
                         if (perak >0) {
-                                System.out.println("|     PERAK     |     " + p6.getValue() + "     |       " + p6.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[5],cat.replace("(", "").replace(")", ""),perak);
                             }
                         if (selangor > 0) {
-                                System.out.println("|    SELANGOR   |     " + p7.getValue() + "     |       " + p7.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[6],cat.replace("(", "").replace(")", ""),selangor);
                             }
                         if (johor > 0) {
-                                System.out.println("|     JOHOR     |     " + p8.getValue() + "     |       " + p8.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[7],cat.replace("(", "").replace(")", ""),johor);
                              }
                         if (kedah > 0) {
-                                System.out.println("|     KEDAH     |     " + p9.getValue() + "     |       " + p9.getKey() + "       |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[8],cat.replace("(", "").replace(")", ""),kedah);
                              }
                         if (sarawak > 0) {
-                                System.out.println("|    SAEAWAK    |     " + p10.getValue() + "     |       " + p10.getKey() + "     |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[9],cat.replace("(", "").replace(")", ""),sarawak);
                             }
                         if (sabah > 0) {
-                                System.out.println("|     SABAH     |     " + p11.getValue() + "     |       " + p11.getKey() + "     |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[10],cat.replace("(", "").replace(")", ""),sabah);
                             }
                         if (melaka > 0) {
-                                System.out.println("|     MELAKA    |     " + p12.getValue() + "     |       " + p12.getKey() + "     |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[11],cat.replace("(", "").replace(")", ""),melaka);
                             }
                         if (kelantan > 0) {
-                                System.out.println("|    KELANTAN   |     " + p13.getValue() + "     |       " + p13.getKey() + "     |");
+                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[12],cat.replace("(", "").replace(")", ""),kelantan);
                             }
                         }
-                        //total=kl;
-                       // System.out.println(kl);
-                        /*TotalStatistic task1 = new TotalStatistic(total);
-                        Future<Integer> future = executorService.submit(task1);
-
-                        try{
-                            //System.out.println("Total kl= "+future.get());
-                            System.out.println("|  KUALA LUMPUR |                  |       " + future.get()+"       |");
-                        }catch (InterruptedException e){
-                            e.printStackTrace();
-                        }catch (ExecutionException e){
-                            e.printStackTrace();
-                        }*/
 
                             }
-                       // }
-
-      //  } catch (MalformedURLException e) {
-
-           // e.printStackTrace();
 
        } catch (Exception e) {
 
            e.printStackTrace();
        }
+        return total;
 
     }
 
-   /* public boolean valid(String url) throws MalformedURLException, IOException {
-
-        try {
-            HttpURLConnection.setFollowRedirects(true);
-            HttpURLConnection checkURL= (HttpURLConnection) new URL(url).openConnection();
-            checkURL.setRequestMethod("HEAD");
-            checkURL.connect();
-            return (checkURL.getResponseCode() == HttpURLConnection.HTTP_OK);
-        } catch (Exception e) {
-            return false;
-        }
-    }*/
     public boolean valid2(String url) {
 
         Document doc = null;
@@ -140,7 +96,7 @@ public class Thread1 implements Runnable{
         return true;
     }
 
-    public Pair[] getTwo(String url) {//<Integer,String>
+    public Pair[] getTwo(String url) {
 
         Document doc = null;
             try {
@@ -283,8 +239,8 @@ public class Thread1 implements Runnable{
                         }
 
         }
+                total=+total+kl+ns+pp+pahang+ptrjaya+perak+selangor+johor+kedah+sarawak+sabah+melaka+kelantan;
 
-               //result ="KL   "+kl+cat;//+"\n Perak   "+totalPERAK[3]+cat;
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -294,22 +250,4 @@ public class Thread1 implements Runnable{
                                new Pair<>(kedah,cat),new Pair<>(sarawak,cat),new Pair<>(sabah,cat),new Pair<>(melaka,cat),
                                new Pair<>(kelantan,cat)};
         }
-
-
-
-
 }
-
-      /* if (ticker.equals(state[i])) {
-                            kl++;
-
-                        }*/
-
-               /*if (kl > 0) {
-                    String title = doc.title();
-                    int scrape = title.indexOf("9");
-                    String category = title.substring(scrape + 1);
-                   result = "|    " + state[i] + "    |     " + category + "     |     " + kl + "     |     ";
-
-                }*/
-//total +=kl;
