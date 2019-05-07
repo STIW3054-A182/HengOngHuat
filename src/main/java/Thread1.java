@@ -59,56 +59,8 @@ public class Thread1 implements Callable<Vector>{
                         subTotal.add(p11);
                         subTotal.add(p12);
                         subTotal.add(p13);
-
-
-                      /*  if (kl >0 ) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[1],cat.replace("(", "").replace(")", ""),kl);
                         }
-                      if (ns >0 ) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[1],cat.replace("(", "").replace(")", ""),ns);
-                             }
-                        if (pp >0 ) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[2],cat.replace("(", "").replace(")", ""),pp);
-                             }
-                        if (pahang >0 ) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[3],cat.replace("(", "").replace(")", ""),pahang);
                             }
-                        if (ptrjaya >0 ) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[4],cat.replace("(", "").replace(")", ""),ptrjaya);
-                             }
-                        if (perak >0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[5],cat.replace("(", "").replace(")", ""),perak);
-                            }
-                        if (selangor > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[6],cat.replace("(", "").replace(")", ""),selangor);
-                            }
-                        if (johor > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[7],cat.replace("(", "").replace(")", ""),johor);
-                             }
-                        if (kedah > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[8],cat.replace("(", "").replace(")", ""),kedah);
-                             }
-                        if (sarawak > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[9],cat.replace("(", "").replace(")", ""),sarawak);
-                            }
-                        if (sabah > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[10],cat.replace("(", "").replace(")", ""),sabah);
-                            }
-                        if (melaka > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[11],cat.replace("(", "").replace(")", ""),melaka);
-                            }
-                        if (kelantan > 0) {
-                            System.out.printf("| %-12s | %-8s | %-6d|\n",state[12],cat.replace("(", "").replace(")", ""),kelantan);
-                            }
-                            */
-
-
-
-                        }
-
-                            }
-
-
        } catch (Exception e) {
 
            e.printStackTrace();
@@ -137,139 +89,66 @@ public class Thread1 implements Callable<Vector>{
             try {
 
                     doc = Jsoup.connect(url).get();
+
+                    String title = doc.title();
+                    int scrape = title.indexOf("9");
+                    String category = title.substring(scrape + 1);
+                    cat = category;
+
                     for (Element row : doc.select("table.CRs1 tr")) {
                         final String ticker = row.select("td:nth-of-type(7)").text();
 
                         switch (ticker) {
                             case "KUALA LUMPUR":
                                 kl++;
-                                if (kl > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-
-                                }
                                 break;
 
                             case "N.SEMBILAN":
                                 ns++;
-                                if (ns > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "PULAU PINANG":
                                 pp++;
-                                if (pp > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "PAHANG":
                                 pahang++;
-                                if (pahang > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "PUTRAJAYA":
                                 ptrjaya++;
-                                if (ptrjaya > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "PERAK":
                                 perak++;
-                                if (perak > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "SELANGOR":
                                 selangor++;
-                                if (selangor > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "JOHOR":
                                 johor++;
-                                if (johor > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "KEDAH":
                                 kedah++;
-                                if (kedah > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "SARAWAK":
                                 sarawak++;
-                                if (sarawak > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "SABAH":
                                 sabah++;
-                                if (sabah > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "MELAKA":
                                 melaka++;
-                                if (melaka > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                             case "KELANTAN":
                                 kelantan++;
-                                if (kelantan > 0) {
-                                    String title = doc.title();
-                                    int scrape = title.indexOf("9");
-                                    String category = title.substring(scrape + 1);
-                                    cat = category;
-                                }
                                 break;
 
                         }

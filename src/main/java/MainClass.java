@@ -17,7 +17,7 @@ public class MainClass {
    static String [] existLinkList;
    static Vector<Integer> total = new Vector<Integer>();
    static Vector<Pair<Integer,String>> stateTotal = new Vector<Pair<Integer,String>>();
-   static Vector<Integer>  stateKLTotal = new Vector<Integer>();
+    static Vector<Integer>  stateKLTotal = new Vector<Integer>();
    static Vector<Integer>  stateNSTotal = new Vector<Integer> ();
    static Vector<Integer>  statePPTotal = new Vector<Integer>();
    static Vector<Integer> statePHGTotal = new Vector<Integer> ();
@@ -30,8 +30,22 @@ public class MainClass {
    static Vector<Integer> stateSBTotal = new Vector<Integer> ();
    static Vector<Integer> stateMLKTotal = new Vector<Integer>();
    static Vector<Integer>  stateKLTTotal = new Vector<Integer> ();
-   static Vector<Integer>  grandTotalState = new Vector<Integer> ();
    static Vector<String> catCode = new Vector<String> ();
+    static Vector<Pair<Integer,String>> stateTotalPoint = new Vector<Pair<Integer,String>>();
+    static Vector<Integer>  stateKLTotalPointer = new Vector<Integer>();
+    static Vector<Integer>  stateNSTotalPointer = new Vector<Integer> ();
+    static Vector<Integer>  statePPTotalPointer = new Vector<Integer>();
+    static Vector<Integer> statePHGTotalPointer = new Vector<Integer> ();
+    static Vector<Integer> statePTRTotalPointer = new Vector<Integer> ();
+    static Vector<Integer>  statePRTotalPointer = new Vector<Integer> ();
+    static Vector<Integer> stateSLGTotalPointer = new Vector<Integer> ();
+    static Vector<Integer>  stateJHTotalPointer = new Vector<Integer> ();
+    static Vector<Integer> stateKDTotalPointer = new Vector<Integer>();
+    static Vector<Integer>  stateSRWTotalPointer = new Vector<Integer> ();
+    static Vector<Integer> stateSBTotalPointer = new Vector<Integer> ();
+    static Vector<Integer> stateMLKTotalPointer = new Vector<Integer>();
+    static Vector<Integer>  stateKLTTotalPointer = new Vector<Integer> ();
+    static Vector<String> catCodePointer = new Vector<String> ();
 
 
 
@@ -69,13 +83,14 @@ public class MainClass {
      // ==============================================================================================================================
 
 
-        System.out.printf("| %-12s | %-8s | %-6s|\n","State","Category","Total");
+   System.out.printf("| %-12s | %-8s | %-6s|\n","State","Category","Total");
         System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
        for (int a=0;a<existList.size();a++){
 
             Thread1 link1 = new Thread1(existLinkList[a]);
             FutureTask<Vector> future2;
            future2 = (FutureTask<Vector>) service.submit(link1);
+
            try {
                 stateTotal = future2.get();
 
@@ -85,9 +100,7 @@ public class MainClass {
             e.printStackTrace();
         }
     }
-
-
-         for (int getTotal=0;getTotal<120;getTotal++) {
+         for (int getTotal=0;getTotal<stateTotal.size();getTotal++) {
              stateKLTotal.add(stateTotal.get((getTotal)).getKey());
             stateNSTotal.add(stateTotal.get((getTotal+1)).getKey());
             statePPTotal.add(stateTotal.get((getTotal+2)).getKey());
@@ -102,11 +115,8 @@ public class MainClass {
             stateMLKTotal.add(stateTotal.get((getTotal+11)).getKey());
             stateKLTTotal.add(stateTotal.get((getTotal+12)).getKey());
              catCode.add(stateTotal.get((getTotal)).getValue());
-
-
             getTotal+=12;
         }
-
 
         int grandTotalKL=0;
         for (Integer totalOfStateKL: stateKLTotal){
@@ -117,9 +127,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[0], catCode.get(getTotal), stateKLTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalKL);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
 
        int grandTotalNS=0;
@@ -131,9 +141,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[1], catCode.get(getTotal), stateNSTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalNS);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
 
         int grandTotalPP=0;
@@ -145,9 +155,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[2], catCode.get(getTotal), statePPTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPP);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
 
         int grandTotalPHG=0;
@@ -159,9 +169,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[3], catCode.get(getTotal), statePHGTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPHG);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalPTR=0;
         for (Integer totalOfStatePTR: statePTRTotal){
@@ -172,9 +182,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[4], catCode.get(getTotal), statePTRTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPTR);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalPR=0;
         for (Integer totalOfStatePR: statePRTotal){
@@ -185,9 +195,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[5], catCode.get(getTotal), statePRTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalPR);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalSLG=0;
         for (Integer totalOfStateSLG: stateSLGTotal){
@@ -198,9 +208,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[6], catCode.get(getTotal), stateSLGTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalSLG);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalJH=0;
         for (Integer totalOfStateJH: stateJHTotal){
@@ -211,9 +221,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[7], catCode.get(getTotal), stateJHTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalJH);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalKD=0;
         for (Integer totalOfStateKD: stateKDTotal){
@@ -224,9 +234,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[8], catCode.get(getTotal), stateKDTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalKD);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalSRW=0;
         for (Integer totalOfStateSRW: stateSRWTotal){
@@ -237,9 +247,9 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[9], catCode.get(getTotal), stateSRWTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalSRW);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalSB=0;
         for (Integer totalOfStateSB: stateSBTotal){
@@ -250,22 +260,24 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[10], catCode.get(getTotal), stateSBTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalSB);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalMLK=0;
+
         for (Integer totalOfStateMLK: stateMLKTotal){
             grandTotalMLK+=totalOfStateMLK;
         }
+
         for (int getTotal=0;getTotal<10;getTotal++) {
             if (stateMLKTotal.get(getTotal)>0) {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[11], catCode.get(getTotal), stateMLKTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalMLK);
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
 
         int grandTotalKLT=0;
         for (Integer totalOfStateKLT: stateKLTTotal){
@@ -276,7 +288,7 @@ public class MainClass {
                 System.out.printf("| %-12s | %-8s | %-6d|\n", state[12], catCode.get(getTotal), stateKLTTotal.get(getTotal));
             }
         }
-        System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
+        System.out.printf("| %-12s | %-8s | %-6s|\n","","--------","-----");
         System.out.printf("| %-12s | %-8s | %-6d|\n","","TOTAL",grandTotalKLT);
         System.out.printf("| %-12s | %-8s | %-6s|\n","------------","--------","-----");
 
@@ -288,7 +300,6 @@ public class MainClass {
 
 
         //===============================================================================================================================================
-
         try {
         service.shutdown();
             if (!service.awaitTermination(60, TimeUnit.SECONDS)) { //wait for existing tasks to terminate
@@ -303,7 +314,6 @@ public class MainClass {
         }
 
     }
-
 
 
 }
