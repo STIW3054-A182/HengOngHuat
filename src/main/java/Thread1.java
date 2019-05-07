@@ -17,7 +17,6 @@ import java.util.concurrent.Callable;
 public class Thread1 implements Callable<Vector>{
     String link,cat;
     int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan;
-    final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR","JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
     public static Vector<Pair<Integer,String>> subTotal = new Vector<Pair<Integer,String>>();
 
 
@@ -92,7 +91,7 @@ public class Thread1 implements Callable<Vector>{
 
                     String title = doc.title();
                     int scrape = title.indexOf("9");
-                    String category = title.substring(scrape + 1);
+                    String category = title.substring(scrape + 1).replace("(", "").replace(")", "");
                     cat = category;
 
                     for (Element row : doc.select("table.CRs1 tr")) {
