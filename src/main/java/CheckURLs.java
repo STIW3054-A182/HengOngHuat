@@ -28,7 +28,6 @@ public class CheckURLs implements Callable<String>{
 
         try {
             if (validUrl(line)) {
-                //System.out.println(Thread.currentThread().getName() + " --> " + line);
                 validLink =line;
             } else {
                 try {
@@ -40,7 +39,7 @@ public class CheckURLs implements Callable<String>{
                     fh.setFormatter(formatter);
 
                     //used to log the invalid url existLink
-                    logger.info(Thread.currentThread().getName() + " --> " + line + " (not exist)");
+                    //logger.info(Thread.currentThread().getName() + " --> " + line + " (not exist)");
                 } catch (SecurityException se) {
                     se.printStackTrace();
                 } catch (IOException ie) {
