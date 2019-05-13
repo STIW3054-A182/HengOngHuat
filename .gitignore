@@ -1,9 +1,16 @@
-target
-.idea/
+*/target/**
+# IntelliJ test run side-effects
+dependency-check-core/data/
+dependency-check-ant/data/
+# Intellij project files
 *.iml
 *.ipr
 *.iws
+.idea/
+# Eclipse project files
 .classpath
 .project
-.settings/
-.DS_Store
+.settings
+maven-eclipse.xml
+.externalToolBuilders
+.pmd
