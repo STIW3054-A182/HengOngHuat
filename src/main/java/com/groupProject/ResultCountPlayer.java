@@ -1,15 +1,11 @@
 package com.groupProject;
 
 import java.util.Vector;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 
 public class ResultCountPlayer extends ValidTableLink implements Runnable {
 
     private Vector<Integer> totalPlayer = new Vector<>();
-    private Future<Vector> future3;;
     private int resultTotal = 0;
 
     public ResultCountPlayer() {
@@ -31,12 +27,11 @@ public class ResultCountPlayer extends ValidTableLink implements Runnable {
         for (int c = 0; c < getExistTableList().size(); c++) {
             String [] tableLink = getExistTableLinkList();
             CountPlayer countPlayer = new CountPlayer(tableLink[c]);
-            future3 = service.submit(countPlayer);
+            FutureTask<Vector<Integer>> future;
+            future = (FutureTask<Vector<Integer>>) service.submit(countPlayer);
             try {
-                totalPlayer = future3.get();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
+                totalPlayer = future.get();
+            } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
         }

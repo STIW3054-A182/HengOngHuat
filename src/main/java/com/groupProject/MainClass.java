@@ -7,13 +7,13 @@ import java.util.Properties;
 public class MainClass {
     public static void main (String[] args) throws IOException {
 
-        String path, fileName;
+        /*String path, fileName;
         PropertyFileWriting obj = new PropertyFileWriting();
         Properties write = obj.setProperties();
         path = write.getProperty("path");
         fileName = write.getProperty("txtFile");
         System.out.println("Path: " + path);
-        System.out.println("FileName: " + fileName);
+        System.out.println("FileName: " + fileName);*/
 
         System.out.println("**************************** DISPLAY VALID LINKS ****************************");
         new FileWriter("myLogFile.log", false); //overwrites file
@@ -32,7 +32,15 @@ public class MainClass {
             e.printStackTrace();
         }
 
-        System.out.println("\n**************************** DISPLAY STATISTICS ****************************");
+        System.out.println("\n***************************** DISPLAY STATISTICS ****************************");
+        ResultStateStatistic stateStatistic = new ResultStateStatistic();
+        Thread t2 = new Thread(stateStatistic);
+        t2.start();
+        try {
+            t2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
     }
 }
