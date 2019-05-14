@@ -29,7 +29,7 @@ public class CheckValidTable implements Callable {
 
         try {
             startTime = System.currentTimeMillis();
-            if (ValidTable(link)) {
+            if (validTable(link)) {
                 validTableLink = link;
             } else {
                 endTime = System.currentTimeMillis();
@@ -50,7 +50,7 @@ public class CheckValidTable implements Callable {
         return validTableLink;
     }
 
-    public boolean ValidTable(String url) {
+    public boolean validTable(String url) {
         Document doc;
         try {
             doc = Jsoup.connect(url).get();

@@ -29,7 +29,7 @@ public class CheckUrls implements Callable<String> {
 
         try {
             startTime = System.currentTimeMillis();
-            if (ValidUrl(line)) {
+            if (validUrl(line)) {
                 System.out.println(Thread.currentThread().getName() + " --> " + line);
                 endTime = System.currentTimeMillis();
                 executeTime = endTime - startTime;
@@ -69,7 +69,7 @@ public class CheckUrls implements Callable<String> {
         return link;
     }
 
-    private boolean ValidUrl(String link) {
+    private boolean validUrl(String link) {
         try {
             HttpURLConnection.setFollowRedirects(true);
             HttpURLConnection checkUrl = (HttpURLConnection) new URL(link).openConnection();

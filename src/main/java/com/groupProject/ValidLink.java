@@ -36,7 +36,7 @@ public class ValidLink {
         return existLinkList;
     }
 
-    public void AllLink() throws IOException {
+    public void allLink() throws IOException {
         coreCount = Runtime.getRuntime().availableProcessors();
         service = Executors.newFixedThreadPool(coreCount);
 

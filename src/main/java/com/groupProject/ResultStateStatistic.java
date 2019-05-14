@@ -182,9 +182,11 @@ public class ResultStateStatistic extends ValidTableLink implements Runnable {
         stateKLT.printGrandTotal();
 
         CalculationState eachState = new CalculationState();
-        int grandTotal = stateKL.getTotal() + stateNS.getTotal() + statePP.getTotal() + statePHG.getTotal() + statePTR.getTotal() + statePR.getTotal() +
-                stateSLG.getTotal() + stateJH.getTotal() + stateKD.getTotal() + stateSRW.getTotal() + stateSB.getTotal() + stateMLK.getTotal() +
-                stateKLT.getTotal();
+        int grandTotal = stateKL.getGrandTotal() + stateNS.getGrandTotal() + statePP.getGrandTotal() +
+                            statePHG.getGrandTotal() + statePTR.getGrandTotal() + statePR.getGrandTotal() +
+                            stateSLG.getGrandTotal() + stateJH.getGrandTotal() + stateKD.getGrandTotal() +
+                            stateSRW.getGrandTotal() + stateSB.getGrandTotal() + stateMLK.getGrandTotal() +
+                            stateKLT.getGrandTotal();
         eachState.printFinalResult(grandTotal);
 
         service.shutdown();

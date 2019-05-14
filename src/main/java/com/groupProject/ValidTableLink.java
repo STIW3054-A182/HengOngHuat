@@ -29,7 +29,7 @@ public class ValidTableLink extends ValidLink {
         return existTableLinkList;
     }
 
-    public void ExistTableLink() {
+    public void existTableLink() {
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 

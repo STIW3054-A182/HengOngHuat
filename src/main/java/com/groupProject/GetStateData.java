@@ -12,7 +12,7 @@ public class GetStateData implements Callable {
 
     private String link,cat;
     private int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan;
-    public static Vector<Pair<Integer,String>> subTotal = new Vector<>();
+    private static Vector<Pair<Integer,String>> subTotal = new Vector<>();
 
     public GetStateData(String link){
         this.link=link;
