@@ -1,8 +1,0 @@
-Tue May 14 12:05:11 SRET 2019	pool-1-thread-3 --> http://chess-results.coom (not exist)
-Execution time in milliseconds: 9
-Tue May 14 12:05:11 SRET 2019	pool-1-thread-2 --> http://chess-results.my (not exist)
-Execution time in milliseconds: 5
-Tue May 14 12:05:16 SRET 2019	pool-1-thread-4 --> http://chess-results.coom (not exist)
-Execution time in milliseconds: 16
-Tue May 14 12:05:17 SRET 2019	pool-1-thread-2 --> http://chess-results.my (not exist)
-Execution time in milliseconds: 0
