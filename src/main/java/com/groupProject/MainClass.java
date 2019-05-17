@@ -42,9 +42,10 @@ public class MainClass {
             e.printStackTrace();
         }*/
 
-        System.out.println("\n*********************** DISPLAY ALL PLAYERS FROM KEDAH ***********************");
+        System.out.println("\n******************************* DISPLAY ALL PLAYERS FROM KEDAH *******************************");
         ResultKedahPlayer kedahPlayers = new ResultKedahPlayer();
         Thread t3 = new Thread(kedahPlayers);
+        t3.start();
         try {
             t3.join();
         } catch (InterruptedException e) {

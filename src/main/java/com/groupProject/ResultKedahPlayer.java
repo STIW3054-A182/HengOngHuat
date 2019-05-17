@@ -1,10 +1,8 @@
 package com.groupProject;
 
 import java.util.Vector;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.FutureTask;
 
 public class ResultKedahPlayer extends ValidTableLink implements Runnable {
 
@@ -23,17 +21,14 @@ public class ResultKedahPlayer extends ValidTableLink implements Runnable {
 
         String format = "| %-5s | %-5s | %-35s| %-8s| %-8s| %-8s| %-8s|\n";
         System.out.format(format, "RK", "SNo", "Name", "Rtg", "State", "Pts", "Category");
+        String format2 = "| %-5s | %-5s | %-35s| %-8s| %-8s| %-8s| %-8s|\n";
+        System.out.format(format2, "-----", "-----", "-----------------------------------",
+                "--------", "--------", "--------", "--------");
 
         for (int z = 0; z < getExistTableList().size(); z++) {
             String [] tableLink2 = getExistTableLinkList();
-            KedahPlayers kedahPlayer = new KedahPlayers(tableLink2[z]);
-            FutureTask<String> future;
-            future = (FutureTask<String>) service.submit(kedahPlayer);
-            try {
-                future.get();
-            } catch (InterruptedException | ExecutionException e) {
-                e.printStackTrace();
-            }
+            Thread myThread = new Thread(new KedahPlayers(tableLink2[z]));
+            service.execute(myThread);
         }
         service.shutdown();
     }
