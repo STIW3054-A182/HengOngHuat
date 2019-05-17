@@ -15,7 +15,7 @@ public class PropertyFileWriting {
             prop.setProperty("path","src\\main\\resources\\");
             prop.setProperty("txtFile","URL.txt");
             prop.setProperty("State","KEDAH");
-            //prop.setProperty("Name","Rosli Iman Hasif");
+            prop.setProperty("Name","Rosli Iman Hasif");
 
             //save properties to project root folder
             prop.store(inputStream,null);

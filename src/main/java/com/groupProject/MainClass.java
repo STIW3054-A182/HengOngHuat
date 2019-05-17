@@ -7,13 +7,13 @@ import java.util.Properties;
 public class MainClass {
     public static void main (String[] args) throws IOException {
 
-        /*String path, fileName;
+        String path, fileName;
         PropertyFileWriting obj = new PropertyFileWriting();
         Properties write = obj.setProperties();
         path = write.getProperty("path");
         fileName = write.getProperty("txtFile");
         System.out.println("Path: " + path);
-        System.out.println("FileName: " + fileName);*/
+        System.out.println("FileName: " + fileName);
 
         System.out.println("**************************** DISPLAY VALID LINKS ****************************");
         new FileWriter("myLogFile.log", false); //overwrites file
@@ -32,7 +32,7 @@ public class MainClass {
             e.printStackTrace();
         }
 
-        /*System.out.println("\n***************************** DISPLAY STATISTICS ****************************");
+        System.out.println("\n***************************** DISPLAY STATISTICS ****************************");
         ResultStateStatistic stateStatistic = new ResultStateStatistic();
         Thread t2 = new Thread(stateStatistic);
         t2.start();
@@ -40,7 +40,7 @@ public class MainClass {
             t2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
         System.out.println("\n******************************* DISPLAY ALL PLAYERS FROM KEDAH *******************************");
         ResultKedahPlayer kedahPlayers = new ResultKedahPlayer();
@@ -52,7 +52,7 @@ public class MainClass {
             e.printStackTrace();
         }
 
-        /*System.out.println("\n**************************** COUNT WINNING POINTS ****************************");
+        System.out.println("\n**************************** COUNT WINNING POINTS ****************************");
         ResultPointerStatistic pointsStatistic = new ResultPointerStatistic();
         Thread t4 = new Thread(pointsStatistic);
         t4.start();
@@ -60,12 +60,16 @@ public class MainClass {
             t4.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }*/
+        }
 
-        /*System.out.println("\n************************** DISPLAY A PLAYER RESULT ***************************");
-        NamePlayer namePlayer = new NamePlayer();
-        namePlayer.run();
-        ResultNamePlayer result = new ResultNamePlayer();
-        result.run();*/
+        System.out.println("\n********************************** DISPLAY A PLAYER RESULT ***********************************");
+        ResultNamePlayer namePlayer = new ResultNamePlayer();
+        Thread t6 = new Thread(namePlayer);
+        t6.start();
+        try {
+            t6.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
