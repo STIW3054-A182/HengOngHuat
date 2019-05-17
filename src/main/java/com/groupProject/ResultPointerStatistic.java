@@ -10,7 +10,7 @@ import java.util.concurrent.FutureTask;
 
 public class ResultPointerStatistic extends ValidTableLink implements Runnable {
 
-    private final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR",
+    private final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAYA","PERAK","SELANGOR",
             "JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
 
     private Vector<Pair<Double, String>> stateTotalPoint = new Vector<Pair<Double, String>>();

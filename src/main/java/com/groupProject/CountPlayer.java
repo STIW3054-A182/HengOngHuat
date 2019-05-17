@@ -12,7 +12,7 @@ public class CountPlayer implements Callable {
 
     private int row;
     private String link,Cat,cat;
-    public static Vector<Integer> subTotal = new Vector<Integer>();
+    private static Vector<Integer> subTotal = new Vector<Integer>();
 
     public CountPlayer(String link){
         this.link=link;
@@ -32,7 +32,7 @@ public class CountPlayer implements Callable {
     }
 
     public int validPlayer (String url){
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(url).get();
             Element table = doc.select("table.CRs1").get(0);
@@ -48,7 +48,7 @@ public class CountPlayer implements Callable {
     }
 
     public String category (String url){
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(url).get();
             Element category = doc.select("div.defaultDialog").get(0);

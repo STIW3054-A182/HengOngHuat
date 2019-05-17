@@ -32,7 +32,7 @@ public class MainClass {
             e.printStackTrace();
         }
 
-        System.out.println("\n***************************** DISPLAY STATISTICS ****************************");
+        /*System.out.println("\n***************************** DISPLAY STATISTICS ****************************");
         ResultStateStatistic stateStatistic = new ResultStateStatistic();
         Thread t2 = new Thread(stateStatistic);
         t2.start();
@@ -40,9 +40,18 @@ public class MainClass {
             t2.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
+        }*/
+
+        System.out.println("\n*********************** DISPLAY ALL PLAYERS FROM KEDAH ***********************");
+        ResultKedahPlayer kedahPlayers = new ResultKedahPlayer();
+        Thread t3 = new Thread(kedahPlayers);
+        try {
+            t3.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
 
-        System.out.println("\n**************************** COUNT WINNING POINTS ****************************");
+        /*System.out.println("\n**************************** COUNT WINNING POINTS ****************************");
         ResultPointerStatistic pointsStatistic = new ResultPointerStatistic();
         Thread t4 = new Thread(pointsStatistic);
         t4.start();
@@ -50,6 +59,12 @@ public class MainClass {
             t4.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+        }*/
+
+        /*System.out.println("\n************************** DISPLAY A PLAYER RESULT ***************************");
+        NamePlayer namePlayer = new NamePlayer();
+        namePlayer.run();
+        ResultNamePlayer result = new ResultNamePlayer();
+        result.run();*/
     }
 }

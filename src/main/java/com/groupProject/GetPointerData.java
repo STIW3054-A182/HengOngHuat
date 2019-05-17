@@ -108,6 +108,7 @@ public class GetPointerData implements Callable {
                         case "SELANGOR":
                             double pointerSELANGOR = Double.parseDouble(point.replace(",", "."));
                             totalPointerSELANGOR += pointerSELANGOR;
+                            break;
 
                         case "JOHOR":
                             double pointerJOHOR = Double.parseDouble(point.replace(",", "."));

@@ -14,6 +14,10 @@ public class CheckValidTable implements Callable {
     private String validTableLink;
     private String link;
 
+    public CheckValidTable() {
+
+    }
+
     public CheckValidTable(String link) {
         this.link = link;
     }
