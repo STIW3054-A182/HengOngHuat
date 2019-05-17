@@ -1,65 +1,83 @@
-
+import javafx.util.Pair;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.util.Vector;
-import javafx.util.Pair;
 import java.util.concurrent.Callable;
 
-public class GetStateData implements Callable{
-    String link,cat;
-    int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan;
-    public static Vector<Pair<Integer,String>> subTotal = new Vector<Pair<Integer,String>>();
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create GetStateData class implements with Callable to call the getExistTableLinkList from ResultStateStatistic class
+ * GetStateData class uses to get total players for each state by category from current validTableLink.
+ */
+public class GetStateData implements Callable {
 
+    private String link,cat;
+    private int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan;
+    private static Vector<Pair<Integer,String>> subTotal = new Vector<>();
 
-   public GetStateData(String link){
-
+    /**
+     * This constructs a get state data with a specified link (validTableLink)
+     * @param link an initial validTableLink
+     */
+    public GetStateData(String link){
         this.link=link;
-   }
+    }
 
-    public Vector<Pair<Integer,String>> call() throws Exception {
-
+    /**
+     * get total players for each state by category from getTwo method
+     * @return subTotal with call() method
+     * for return the whole value to ResultStateStatistic class.
+     */
+    @Override
+    public Vector<Pair<Integer,String>> call() {
         try {
-                if (getTwo(link)!=null) {
-                    Pair p1 = new Pair(kl, cat);
-                    Pair p2 = new Pair(ns, cat);
-                    Pair p3 = new Pair(pp, cat);
-                    Pair p4 = new Pair(pahang, cat);
-                    Pair p5 = new Pair(ptrjaya, cat);
-                    Pair p6 = new Pair(perak, cat);
-                    Pair p7 = new Pair(selangor, cat);
-                    Pair p8 = new Pair(johor, cat);
-                    Pair p9 = new Pair(kedah, cat);
-                    Pair p10 = new Pair(sarawak, cat);
-                    Pair p11 = new Pair(sabah, cat);
-                    Pair p12 = new Pair(melaka, cat);
-                    Pair p13 = new Pair(kelantan, cat);
-                    subTotal.add(p1);
-                    subTotal.add(p2);
-                    subTotal.add(p3);
-                    subTotal.add(p4);
-                    subTotal.add(p5);
-                    subTotal.add(p6);
-                    subTotal.add(p7);
-                    subTotal.add(p8);
-                    subTotal.add(p9);
-                    subTotal.add(p10);
-                    subTotal.add(p11);
-                    subTotal.add(p12);
-                    subTotal.add(p13);
-                }
+            if (getTwo(link)!=null) {
+                Pair<Integer, String> p1 = new Pair<>(kl, cat);
+                Pair<Integer, String> p2 = new Pair<>(ns, cat);
+                Pair<Integer, String> p3 = new Pair<>(pp, cat);
+                Pair<Integer, String> p4 = new Pair<>(pahang, cat);
+                Pair<Integer, String> p5 = new Pair<>(ptrjaya, cat);
+                Pair<Integer, String> p6 = new Pair<>(perak, cat);
+                Pair<Integer, String> p7 = new Pair<>(selangor, cat);
+                Pair<Integer, String> p8 = new Pair<>(johor, cat);
+                Pair<Integer, String> p9 = new Pair<>(kedah, cat);
+                Pair<Integer, String> p10 = new Pair<>(sarawak, cat);
+                Pair<Integer, String> p11 = new Pair<>(sabah, cat);
+                Pair<Integer, String> p12 = new Pair<>(melaka, cat);
+                Pair<Integer, String> p13 = new Pair<>(kelantan, cat);
+                subTotal.add(p1);
+                subTotal.add(p2);
+                subTotal.add(p3);
+                subTotal.add(p4);
+                subTotal.add(p5);
+                subTotal.add(p6);
+                subTotal.add(p7);
+                subTotal.add(p8);
+                subTotal.add(p9);
+                subTotal.add(p10);
+                subTotal.add(p11);
+                subTotal.add(p12);
+                subTotal.add(p13);
+            }
         } catch (Exception e) {
-
             e.printStackTrace();
         }
         return subTotal;
     }
 
+    /**
+     * get total players for each state by category from current validTableLink
+     * @param url is validTableLink
+     * @return current total players for each state and category in Pair format.
+     */
+
     public Pair[] getTwo(String url) {
 
-        Document doc = null;
+        Document doc;
         try {
-
             doc = Jsoup.connect(url).get();
 
             String title = doc.title();
@@ -125,7 +143,6 @@ public class GetStateData implements Callable{
 
                 }
             }
-
         } catch (Exception e) {
             e.printStackTrace();
         }

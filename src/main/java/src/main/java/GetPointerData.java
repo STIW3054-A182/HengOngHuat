@@ -1,55 +1,69 @@
+import javafx.util.Pair;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.util.Vector;
-import javafx.util.Pair;
 import java.util.concurrent.Callable;
 
-public class GetPointerData implements Callable{
-    String link,cat;
-    double pointerKL, pointerNS, pointerPP, pointerPAHANG, pointerPTRJAYA, pointerPERAK, pointerSELANGOR, pointerJOHOR,
-            pointerKEDAH, pointerSRW, pointerSB, pointerMLK, pointerKLT;
-    double totalPointerKL, totalPointerNS,totalPointerPP,totalPointerPAHANG,totalPointerPTRJAYA,totalPointerPERAK,totalPointerSELANGOR,
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create GetPointerData class implements with Callable to call the getExistTableLinkList from ResultPointerStatistic class
+ * GetPointerData class uses to get total points for each state by category from current validTableLink.
+ */
+
+public class GetPointerData implements Callable {
+    private String link, cat;
+    private double totalPointerKL, totalPointerNS,totalPointerPP,totalPointerPAHANG,totalPointerPTRJAYA,totalPointerPERAK,totalPointerSELANGOR,
             totalPointerJOHOR, totalPointerKEDAH, totalPointerSRW,totalPointerSB,totalPointerMLK,totalPointerKLT;
-    public static Vector<Pair<Double,String>> subTotal = new Vector<Pair<Double,String>>();
+    private static Vector<Pair<Double,String>> subTotal = new Vector<>();
 
-
-    public GetPointerData(String link){
-
-        this.link=link;
+    /**
+     * This constructs a get pointer data with a specified link (validTableLink)
+     * @param link an initial validTableLink
+     */
+    public GetPointerData(String link) {
+        this.link = link;
     }
 
-    public Vector<Pair<Double,String>> call() throws Exception {
+    /**
+     * get total points for each state by category from getTwo method
+     * @return subTotal with call() method
+     * for return the whole value to ResultPointerStatistic class.
+     */
+    @Override
+    public Vector<Pair<Double,String>> call() {
         try {
-                if (getTwo(link)!=null){
-                    Pair p1=new Pair(totalPointerKL,cat);
-                    Pair p2=new Pair(totalPointerNS,cat);
-                    Pair p3=new Pair(totalPointerPP,cat);
-                    Pair p4=new Pair(totalPointerPAHANG,cat);
-                    Pair p5=new Pair(totalPointerPTRJAYA,cat);
-                    Pair p6=new Pair(totalPointerPERAK,cat);
-                    Pair p7=new Pair(totalPointerSELANGOR,cat);
-                    Pair p8=new Pair(totalPointerJOHOR,cat);
-                    Pair p9=new Pair(totalPointerKEDAH,cat);
-                    Pair p10=new Pair(totalPointerSRW,cat);
-                    Pair p11=new Pair(totalPointerSB,cat);
-                    Pair p12=new Pair(totalPointerMLK,cat);
-                    Pair p13=new Pair(totalPointerKLT,cat);
+            if (getTwo(link)!=null){
+                Pair<Double, String> p1 = new Pair<>(totalPointerKL,cat);
+                Pair<Double, String> p2 = new Pair<>(totalPointerNS,cat);
+                Pair<Double, String> p3 = new Pair<>(totalPointerPP,cat);
+                Pair<Double, String> p4 = new Pair<>(totalPointerPAHANG,cat);
+                Pair<Double, String> p5 = new Pair<>(totalPointerPTRJAYA,cat);
+                Pair<Double, String> p6 = new Pair<>(totalPointerPERAK,cat);
+                Pair<Double, String> p7 = new Pair<>(totalPointerSELANGOR,cat);
+                Pair<Double, String> p8 = new Pair<>(totalPointerJOHOR,cat);
+                Pair<Double, String> p9 = new Pair<>(totalPointerKEDAH,cat);
+                Pair<Double, String> p10 = new Pair<>(totalPointerSRW,cat);
+                Pair<Double, String> p11 = new Pair<>(totalPointerSB,cat);
+                Pair<Double, String> p12 = new Pair<>(totalPointerMLK,cat);
+                Pair<Double, String> p13 = new Pair<>(totalPointerKLT,cat);
 
-                    subTotal.add(p1);
-                    subTotal.add(p2);
-                    subTotal.add(p3);
-                    subTotal.add(p4);
-                    subTotal.add(p5);
-                    subTotal.add(p6);
-                    subTotal.add(p7);
-                    subTotal.add(p8);
-                    subTotal.add(p9);
-                    subTotal.add(p10);
-                    subTotal.add(p11);
-                    subTotal.add(p12);
-                    subTotal.add(p13);
-                }
+                subTotal.add(p1);
+                subTotal.add(p2);
+                subTotal.add(p3);
+                subTotal.add(p4);
+                subTotal.add(p5);
+                subTotal.add(p6);
+                subTotal.add(p7);
+                subTotal.add(p8);
+                subTotal.add(p9);
+                subTotal.add(p10);
+                subTotal.add(p11);
+                subTotal.add(p12);
+                subTotal.add(p13);
+            }
         } catch (Exception e) {
 
             e.printStackTrace();
@@ -57,17 +71,20 @@ public class GetPointerData implements Callable{
         return subTotal;
     }
 
+    /**
+     * get total points for each state by category from current validTableLink
+     * @param url is validTableLink
+     * @return current total points for each state and category in Pair format.
+     */
+    protected Pair[] getTwo(String url) {
 
-    public Pair[] getTwo(String url) {
-
-        Document doc = null;
+        Document doc;
         try {
             doc = Jsoup.connect(url).get();
 
             String title = doc.title();
             int scrape = title.indexOf("9");
-            String category = title.substring(scrape + 1).replace("(", "").replace(")", "");
-            cat = category;
+            cat = title.substring(scrape + 1).replace("(", "").replace(")", "");
 
             for (Element row : doc.select("table.CRs1 tr")) {
                 final String ticker = row.select("td:nth-of-type(7)").text();
@@ -78,73 +95,72 @@ public class GetPointerData implements Callable{
                 else {
                     switch (ticker) {
                         case "KUALA LUMPUR":
-                            pointerKL = Double.parseDouble(point.replace(",", "."));
+                            double pointerKL = Double.parseDouble(point.replace(",", "."));
                             totalPointerKL += pointerKL;
                             break;
 
                         case "N.SEMBILAN":
-                            pointerNS = Double.parseDouble(point.replace(",", "."));
+                            double pointerNS = Double.parseDouble(point.replace(",", "."));
                             totalPointerNS += pointerNS;
                             break;
 
                         case "PULAU PINANG":
-                            pointerPP = Double.parseDouble(point.replace(",", "."));
+                            double pointerPP = Double.parseDouble(point.replace(",", "."));
                             totalPointerPP += pointerPP;
                             break;
 
                         case "PAHANG":
-                            pointerPAHANG = Double.parseDouble(point.replace(",", "."));
+                            double pointerPAHANG = Double.parseDouble(point.replace(",", "."));
                             totalPointerPAHANG += pointerPAHANG;
                             break;
 
                         case "PUTRAJAYA":
-                            pointerPTRJAYA = Double.parseDouble(point.replace(",", "."));
+                            double pointerPTRJAYA = Double.parseDouble(point.replace(",", "."));
                             totalPointerPTRJAYA+= pointerPTRJAYA;
                             break;
 
                         case "PERAK":
-                            pointerPERAK= Double.parseDouble(point.replace(",", "."));
+                            double pointerPERAK = Double.parseDouble(point.replace(",", "."));
                             totalPointerPERAK += pointerPERAK;
                             break;
 
                         case "SELANGOR":
-                            pointerSELANGOR = Double.parseDouble(point.replace(",", "."));
+                            double pointerSELANGOR = Double.parseDouble(point.replace(",", "."));
                             totalPointerSELANGOR += pointerSELANGOR;
                             break;
 
                         case "JOHOR":
-                            pointerJOHOR = Double.parseDouble(point.replace(",", "."));
-                            totalPointerJOHOR+=pointerJOHOR;
+                            double pointerJOHOR = Double.parseDouble(point.replace(",", "."));
+                            totalPointerJOHOR+= pointerJOHOR;
                             break;
 
                         case "KEDAH":
-                            pointerKEDAH = Double.parseDouble(point.replace(",", "."));
-                            totalPointerKEDAH+=pointerKEDAH;
+                            double pointerKEDAH = Double.parseDouble(point.replace(",", "."));
+                            totalPointerKEDAH+= pointerKEDAH;
                             break;
 
                         case "SARAWAK":
-                            pointerSRW = Double.parseDouble(point.replace(",", "."));
-                            totalPointerSRW+=pointerSRW;
+                            double pointerSRW = Double.parseDouble(point.replace(",", "."));
+                            totalPointerSRW+= pointerSRW;
                             break;
 
                         case "SABAH":
-                            pointerSB = Double.parseDouble(point.replace(",", "."));
-                            totalPointerSB+=pointerSB;
+                            double pointerSB = Double.parseDouble(point.replace(",", "."));
+                            totalPointerSB+= pointerSB;
                             break;
 
                         case "MELAKA":
-                            pointerMLK = Double.parseDouble(point.replace(",", "."));
-                            totalPointerMLK+=pointerMLK;
+                            double pointerMLK = Double.parseDouble(point.replace(",", "."));
+                            totalPointerMLK+= pointerMLK;
                             break;
 
                         case "KELANTAN":
-                            pointerKLT = Double.parseDouble(point.replace(",", "."));
-                            totalPointerKLT+=pointerKLT ;
+                            double pointerKLT = Double.parseDouble(point.replace(",", "."));
+                            totalPointerKLT+= pointerKLT;
                             break;
 
                     }
                 }
-
             }
         } catch (Exception e) {
             e.printStackTrace();

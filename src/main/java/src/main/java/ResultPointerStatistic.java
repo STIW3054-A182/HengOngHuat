@@ -1,180 +1,208 @@
 import javafx.util.Pair;
+
 import java.util.Vector;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
-public class ResultPointerStatistic extends MainClass implements Runnable {
-    final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR",
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create ResultPointerStatistic class from ValidTableLink and implements with Runnable
+ */
+
+public class ResultPointerStatistic extends ValidTableLink implements Runnable {
+    /**
+     * Classify the data for 13 states by category.
+     */
+    private final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR",
             "JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
 
-    Vector<Pair<Double, String>> stateTotalPoint = new Vector<Pair<Double, String>>();
-    Vector<Double> stateKLTotalPointer = new Vector<>();
-    Vector<Double> stateNSTotalPointer = new Vector<>();
-    Vector<Double> statePPTotalPointer = new Vector<>();
-    Vector<Double> statePHGTotalPointer = new Vector<>();
-    Vector<Double> statePTRTotalPointer = new Vector<>();
-    Vector<Double> statePRTotalPointer = new Vector<>();
-    Vector<Double> stateSLGTotalPointer = new Vector<>();
-    Vector<Double> stateJHTotalPointer = new Vector<>();
-    Vector<Double> stateKDTotalPointer = new Vector<>();
-    Vector<Double> stateSRWTotalPointer = new Vector<>();
-    Vector<Double> stateSBTotalPointer = new Vector<>();
-    Vector<Double> stateMLKTotalPointer = new Vector<>();
-    Vector<Double> stateKLTTotalPointer = new Vector<>();
-    Vector<String> catCodePointer = new Vector<String>();
+    private Vector<Pair<Double, String>> stateTotalPoint = new Vector<Pair<Double, String>>();
+    private Vector<Double> stateKLTotalPointer = new Vector<>();
+    private Vector<Double> stateNSTotalPointer = new Vector<>();
+    private Vector<Double> statePPTotalPointer = new Vector<>();
+    private Vector<Double> statePHGTotalPointer = new Vector<>();
+    private Vector<Double> statePTRTotalPointer = new Vector<>();
+    private Vector<Double> statePRTotalPointer = new Vector<>();
+    private Vector<Double> stateSLGTotalPointer = new Vector<>();
+    private Vector<Double> stateJHTotalPointer = new Vector<>();
+    private Vector<Double> stateKDTotalPointer = new Vector<>();
+    private Vector<Double> stateSRWTotalPointer = new Vector<>();
+    private Vector<Double> stateSBTotalPointer = new Vector<>();
+    private Vector<Double> stateMLKTotalPointer = new Vector<>();
+    private Vector<Double> stateKLTTotalPointer = new Vector<>();
+    private Vector<String> catCodePointer = new Vector<>();
+    private String [] eachStatePoints;
 
+    public ResultPointerStatistic() {
+
+    }
+    /**
+     * This constructs a result of points statistic with a specified existList,existLinkList,existTableList,existTableLinkList.
+     * @param existList valid link
+     * @param existLinkList valid link list
+     * @param existTableList valid table link
+     * @param existTableLinkList valid table link list
+     */
+    public ResultPointerStatistic(Vector<String> existList, String [] existLinkList, Vector<String> existTableList, String [] existTableLinkList) {
+        super(existList, existLinkList, existTableList, existTableLinkList);
+    }
+
+    @Override
     public void run() {
         int coreCount = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(coreCount);
 
-        State displayResult = new State();
-        displayResult.printTitle();
+        System.out.printf("| %-12s | %-8s | %-6s|\n", "State", "Category", "Total");
+        System.out.printf("| %-12s | %-8s | %-6s|\n", "------------", "--------", "-----");
 
-        for (int a = 0; a < existTableList.size(); a++) {
-            GetPointerData link1 = new GetPointerData(existTableLinkList[a]);
-            FutureTask<Vector> future3;
-            future3 = (FutureTask<Vector>) service.submit(link1);
-
+        for (int x = 0; x < getExistTableList().size(); x++) {
+            eachStatePoints = getExistTableLinkList();
+            GetPointerData link = new GetPointerData(eachStatePoints[x]);
+            FutureTask<Vector<Pair<Double, String>>> future;
+            future = (FutureTask<Vector<Pair<Double, String>>>) service.submit(link);
             try {
-                stateTotalPoint = future3.get();
-
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
+                stateTotalPoint = future.get();
+            } catch (InterruptedException | ExecutionException e) {
                 e.printStackTrace();
             }
         }
-                for (int getTotal=0;getTotal<stateTotalPoint.size();getTotal++) {
-                    stateKLTotalPointer.add(stateTotalPoint.get((getTotal)).getKey());
-                    stateNSTotalPointer.add(stateTotalPoint.get((getTotal+1)).getKey());
-                    statePPTotalPointer.add(stateTotalPoint.get((getTotal+2)).getKey());
-                    statePHGTotalPointer.add(stateTotalPoint.get((getTotal+3)).getKey());
-                    statePTRTotalPointer.add(stateTotalPoint.get((getTotal+4)).getKey());
-                    statePRTotalPointer.add(stateTotalPoint.get((getTotal+5)).getKey());
-                    stateSLGTotalPointer.add(stateTotalPoint.get((getTotal+6)).getKey());
-                    stateJHTotalPointer.add(stateTotalPoint.get((getTotal+7)).getKey());
-                    stateKDTotalPointer.add(stateTotalPoint.get((getTotal+8)).getKey());
-                    stateSRWTotalPointer.add(stateTotalPoint.get((getTotal+9)).getKey());
-                    stateSBTotalPointer.add(stateTotalPoint.get((getTotal+10)).getKey());
-                    stateMLKTotalPointer.add(stateTotalPoint.get((getTotal+11)).getKey());
-                    stateKLTTotalPointer.add(stateTotalPoint.get((getTotal+12)).getKey());
-                    catCodePointer.add(stateTotalPoint.get((getTotal)).getValue());
-                    getTotal+=12;
-                }
 
-        State stateKL = new State();
+        int a;
+        for (a = 0; a < stateTotalPoint.size(); a++) {
+            stateKLTotalPointer.add(stateTotalPoint.get((a)).getKey());
+            stateNSTotalPointer.add(stateTotalPoint.get((a+1)).getKey());
+            statePPTotalPointer.add(stateTotalPoint.get((a+2)).getKey());
+            statePHGTotalPointer.add(stateTotalPoint.get((a+3)).getKey());
+            statePTRTotalPointer.add(stateTotalPoint.get((a+4)).getKey());
+            statePRTotalPointer.add(stateTotalPoint.get((a+5)).getKey());
+            stateSLGTotalPointer.add(stateTotalPoint.get((a+6)).getKey());
+            stateJHTotalPointer.add(stateTotalPoint.get((a+7)).getKey());
+            stateKDTotalPointer.add(stateTotalPoint.get((a+8)).getKey());
+            stateSRWTotalPointer.add(stateTotalPoint.get((a+9)).getKey());
+            stateSBTotalPointer.add(stateTotalPoint.get((a+10)).getKey());
+            stateMLKTotalPointer.add(stateTotalPoint.get((a+11)).getKey());
+            stateKLTTotalPointer.add(stateTotalPoint.get((a+12)).getKey());
+            catCodePointer.add(stateTotalPoint.get((a)).getValue());
+            a+=12;
+        }
+
+        CalculationPoints stateKL = new CalculationPoints();
         stateKL.calculateTotalPointer(stateKLTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateKL.displayFull(state[0],catCodePointer.get(a),stateKLTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateKL.catState(state[0],catCodePointer.get(a),stateKLTotalPointer.get(a));
             stateKL.printResultPointer();
         }
         stateKL.printGrandTotalPointer();
 
-        State stateNS = new State();
+        CalculationPoints stateNS = new CalculationPoints();
         stateNS.calculateTotalPointer(stateNSTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateNS.displayFull(state[1],catCodePointer.get(a),stateNSTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateNS.catState(state[1],catCodePointer.get(a),stateNSTotalPointer.get(a));
             stateNS.printResultPointer();
         }
         stateNS.printGrandTotalPointer();
 
-        State statePP = new State();
+        CalculationPoints statePP = new CalculationPoints();
         statePP.calculateTotalPointer(statePPTotalPointer);
-        for (int a=0;a<10;a++) {
-            statePP.displayFull(state[2],catCodePointer.get(a),statePPTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            statePP.catState(state[2],catCodePointer.get(a),statePPTotalPointer.get(a));
             statePP.printResultPointer();
         }
         statePP.printGrandTotalPointer();
 
-
-        State statePHG = new State();
+        CalculationPoints statePHG = new CalculationPoints();
         statePHG.calculateTotalPointer(statePHGTotalPointer);
-        for (int a=0;a<10;a++) {
-            statePHG.displayFull(state[3],catCodePointer.get(a),statePHGTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            statePHG.catState(state[3],catCodePointer.get(a),statePHGTotalPointer.get(a));
             statePHG.printResultPointer();
         }
         statePHG.printGrandTotalPointer();
 
-        State statePTR= new State();
+        CalculationPoints statePTR = new CalculationPoints();
         statePTR.calculateTotalPointer(statePTRTotalPointer);
-        for (int a=0;a<10;a++) {
-            statePTR.displayFull(state[4],catCodePointer.get(a),statePTRTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            statePTR.catState(state[4],catCodePointer.get(a),statePTRTotalPointer.get(a));
             statePTR.printResultPointer();
         }
         statePTR.printGrandTotalPointer();
 
-        State statePR= new State();
+        CalculationPoints statePR = new CalculationPoints();
         statePR.calculateTotalPointer(statePRTotalPointer);
-        for (int a=0;a<10;a++) {
-            statePR.displayFull(state[5],catCodePointer.get(a),statePRTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            statePR.catState(state[5],catCodePointer.get(a),statePRTotalPointer.get(a));
             statePR.printResultPointer();
         }
         statePR.printGrandTotalPointer();
 
-        State stateSLG= new State();
+        CalculationPoints stateSLG = new CalculationPoints();
         stateSLG.calculateTotalPointer(stateSLGTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateSLG.displayFull(state[6],catCodePointer.get(a),stateSLGTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateSLG.catState(state[6],catCodePointer.get(a),stateSLGTotalPointer.get(a));
             stateSLG.printResultPointer();
         }
         stateSLG.printGrandTotalPointer();
 
-
-        State stateJH= new State();
+        CalculationPoints stateJH = new CalculationPoints();
         stateJH.calculateTotalPointer(stateJHTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateJH.displayFull(state[7],catCodePointer.get(a),stateJHTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateJH.catState(state[7],catCodePointer.get(a),stateJHTotalPointer.get(a));
             stateJH.printResultPointer();
         }
         stateJH.printGrandTotalPointer();
 
-        State stateKD= new State();
+        CalculationPoints stateKD = new CalculationPoints();
         stateKD.calculateTotalPointer(stateKDTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateKD.displayFull(state[8],catCodePointer.get(a),stateKDTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateKD.catState(state[8],catCodePointer.get(a),stateKDTotalPointer.get(a));
             stateKD.printResultPointer();
         }
         stateKD.printGrandTotalPointer();
 
-        State stateSRW= new State();
+        CalculationPoints stateSRW = new CalculationPoints();
         stateSRW.calculateTotalPointer(stateSRWTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateSRW.displayFull(state[9],catCodePointer.get(a),stateSRWTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateSRW.catState(state[9],catCodePointer.get(a),stateSRWTotalPointer.get(a));
             stateSRW.printResultPointer();
         }
         stateSRW.printGrandTotalPointer();
 
-        State stateSB= new State();
+        CalculationPoints stateSB = new CalculationPoints();
         stateSB.calculateTotalPointer(stateSBTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateSB.displayFull(state[10],catCodePointer.get(a),stateSBTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateSB.catState(state[10],catCodePointer.get(a),stateSBTotalPointer.get(a));
             stateSB.printResultPointer();
         }
         stateSB.printGrandTotalPointer();
 
-        State stateMLK= new State();
+        CalculationPoints stateMLK = new CalculationPoints();
         stateMLK.calculateTotalPointer(stateMLKTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateMLK.displayFull(state[11],catCodePointer.get(a),stateMLKTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateMLK.catState(state[11],catCodePointer.get(a),stateMLKTotalPointer.get(a));
             stateMLK.printResultPointer();
         }
         stateMLK.printGrandTotalPointer();
 
-        State stateKLT= new State();
+        CalculationPoints stateKLT = new CalculationPoints();
         stateKLT.calculateTotalPointer(stateKLTTotalPointer);
-        for (int a=0;a<10;a++) {
-            stateKLT.displayFull(state[12],catCodePointer.get(a),stateKLTTotalPointer.get(a));
+        for (a = 0; a < eachStatePoints.length; a++) {
+            stateKLT.catState(state[12],catCodePointer.get(a),stateKLTTotalPointer.get(a));
             stateKLT.printResultPointer();
         }
         stateKLT.printGrandTotalPointer();
 
-        double grandTotalPointer=0;
-        grandTotalPointer=stateKL.getGrandTotalPointer()+stateNS.getGrandTotalPointer()+statePP.getGrandTotalPointer()+statePHG.getGrandTotalPointer()+
-                            statePTR.getGrandTotalPointer()+statePR.getGrandTotalPointer()+ stateSLG.getGrandTotalPointer()+stateJH.getGrandTotalPointer()+
-                            stateKD.getGrandTotalPointer()+stateSRW.getGrandTotalPointer()+ stateSB.getGrandTotalPointer()+stateMLK.getGrandTotalPointer()+
-                            stateKLT.getGrandTotalPointer();
-        displayResult.printFinalResultPointer(grandTotalPointer);
+        CalculationPoints points = new CalculationPoints();
+        //get total points for each state by category from CalculationPoints class and count all the points
+        double grandTotalPointer = stateKL.getGrandTotalPointer() + stateNS.getGrandTotalPointer() + statePP.getGrandTotalPointer() +
+                statePHG.getGrandTotalPointer() + statePTR.getGrandTotalPointer() + statePR.getGrandTotalPointer() +
+                stateSLG.getGrandTotalPointer() + stateJH.getGrandTotalPointer() + stateKD.getGrandTotalPointer() +
+                stateSRW.getGrandTotalPointer() + stateSB.getGrandTotalPointer() + stateMLK.getGrandTotalPointer() +
+                stateKLT.getGrandTotalPointer();
+        points.printFinalResultPointer(grandTotalPointer);
+
+        service.shutdown();
     }
 }
