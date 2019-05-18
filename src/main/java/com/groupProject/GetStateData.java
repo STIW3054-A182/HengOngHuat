@@ -76,7 +76,7 @@ public class GetStateData implements Callable {
      * @param url is validTableLink
      * @return current total points for each state and category in Pair format.
      */
-    public Pair[] getTwo(String url) {
+    protected Pair[] getTwo(String url) {
 
         Document doc;
         try {
