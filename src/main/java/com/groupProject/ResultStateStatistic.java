@@ -8,7 +8,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create ResultStateStatistic class from ValidTableLink and implements with Runnable
+ */
 public class ResultStateStatistic extends ValidTableLink implements Runnable {
+     /**
+     * Classify the data for 13 states by category.
+     */
 
     private final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAY","PERAK","SELANGOR",
             "JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
@@ -33,7 +42,14 @@ public class ResultStateStatistic extends ValidTableLink implements Runnable {
     public ResultStateStatistic() {
 
     }
-
+    
+      /**
+     * This constructs a result of player statistic with a specified existList,existLinkList,existTableList,existTableLinkList.
+     * @param existList valid link
+     * @param existLinkList valid link list
+     * @param existTableList valid table link
+     * @param existTableLinkList valid table link list
+     */
     public ResultStateStatistic(Vector<String> existList, String [] existLinkList, Vector<String> existTableList, String [] existTableLinkList) {
         super(existList, existLinkList, existTableList, existTableLinkList);
     }
@@ -182,6 +198,7 @@ public class ResultStateStatistic extends ValidTableLink implements Runnable {
         stateKLT.printGrandTotal();
 
         CalculationState eachState = new CalculationState();
+          //get total players for each state by category from CalculationState class and count all the players
         int grandTotal = stateKL.getGrandTotal() + stateNS.getGrandTotal() + statePP.getGrandTotal() +
                             statePHG.getGrandTotal() + statePTR.getGrandTotal() + statePR.getGrandTotal() +
                             stateSLG.getGrandTotal() + stateJH.getGrandTotal() + stateKD.getGrandTotal() +
