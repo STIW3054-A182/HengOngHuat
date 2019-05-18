@@ -9,10 +9,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
 /**
+ * Create ResultStateStatistic class from ValidTableLink and implements with Runnable
  * @author Liew Sin Hui
  * @version 1.0
  * @since 2019-04-19
- * Create ResultStateStatistic class from ValidTableLink and implements with Runnable
  */
 public class ResultStateStatistic extends ValidTableLink implements Runnable {
      /**
