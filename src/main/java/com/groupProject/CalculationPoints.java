@@ -3,10 +3,10 @@ package com.groupProject;
 import java.util.Vector;
 
 /**
+ * CalculationPoints class uses to count the total points for each state.
  * @author Liew Sin Hui
  * @version 1.0
  * @since 2019-04-19
- * CalculationPoints class uses to count the total points for each state.
  */
 public class CalculationPoints {
 
