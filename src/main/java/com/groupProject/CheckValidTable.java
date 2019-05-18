@@ -9,6 +9,13 @@ import java.io.FileWriter;
 import java.util.Date;
 import java.util.concurrent.Callable;
 
+/**
+ * Create CheckValidTable class implements with Callable to call the getExistLinkList.
+ * CheckValidTable class uses to get validTablelinks.
+ * @author Chong Mei Yong
+ * @version 1.0
+ * @since 2019-04-19
+ */
 public class CheckValidTable implements Callable {
 
     private String validTableLink;
@@ -18,10 +25,18 @@ public class CheckValidTable implements Callable {
 
     }
 
+    /**
+     *This constructs a check valid table with a specified link (existLink)
+     * @param link an initial validLink
+     */
     public CheckValidTable(String link) {
         this.link = link;
     }
 
+     /**
+     * get valid link from exist link list
+     * @return validTableLink
+     */
     @Override
     public String call() {
         long startTime, endTime, executeTime;
@@ -54,6 +69,11 @@ public class CheckValidTable implements Callable {
         return validTableLink;
     }
 
+    /**
+     * to test valid table link from exist link list
+     * @param url is exist link
+     * @return validTableLink if condition is matched.
+     */
     public boolean validTable(String url) {
         Document doc;
         try {
