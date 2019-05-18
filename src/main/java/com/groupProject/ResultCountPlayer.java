@@ -3,6 +3,13 @@ package com.groupProject;
 import java.util.Vector;
 import java.util.concurrent.*;
 
+/**
+ * Create ResultCountPlayer class from ValidTableLink implements with Runnable
+ * @author Chong Mei Yong
+ * @version 1.0
+ * @since 2019-04-19
+ */
+
 public class ResultCountPlayer extends ValidTableLink implements Runnable {
 
     private Vector<Integer> totalPlayer = new Vector<>();
@@ -12,6 +19,14 @@ public class ResultCountPlayer extends ValidTableLink implements Runnable {
 
     }
 
+    /**
+     * This constructs a result of total player with a specified existList,existLinkList,existTableList,existTableLinkList.
+     * @param existList valid link
+     * @param existLinkList valid link list
+     * @param existTableList valid table link
+     * @param existTableLinkList valid table link list
+     */
+    
     public ResultCountPlayer(Vector<String> existList, String [] existLinkList, Vector<String> existTableList, String [] existTableLinkList) {
         super(existList, existLinkList, existTableList, existTableLinkList);
     }
