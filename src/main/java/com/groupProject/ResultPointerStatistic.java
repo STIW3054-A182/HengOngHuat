@@ -8,8 +8,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.FutureTask;
 
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create ResultPointerStatistic class from ValidTableLink and implements with Runnable
+ */
 public class ResultPointerStatistic extends ValidTableLink implements Runnable {
-
+    /**
+     * Classify the data for 13 states by category.
+     */
+    
     private final String [] state={"KUALA LUMPUR", "N.SEMBILAN","PULAU PINANG","PAHANG","PUTRAJAYA","PERAK","SELANGOR",
             "JOHOR","KEDAH","SARAWAK","SABAH","MELAKA","KELANTAN"};
 
@@ -33,7 +42,14 @@ public class ResultPointerStatistic extends ValidTableLink implements Runnable {
     public ResultPointerStatistic() {
 
     }
-
+    
+    /**
+     * This constructs a result of points statistic with a specified existList,existLinkList,existTableList,existTableLinkList.
+     * @param existList valid link
+     * @param existLinkList valid link list
+     * @param existTableList valid table link
+     * @param existTableLinkList valid table link list
+     */
     public ResultPointerStatistic(Vector<String> existList, String [] existLinkList, Vector<String> existTableList, String [] existTableLinkList) {
         super(existList, existLinkList, existTableList, existTableLinkList);
     }
@@ -182,6 +198,7 @@ public class ResultPointerStatistic extends ValidTableLink implements Runnable {
         stateKLT.printGrandTotalPointer();
 
         CalculationPoints points = new CalculationPoints();
+        //get total points for each state by category from CalculationPoints class and count all the points
         double grandTotalPointer = stateKL.getGrandTotalPointer() + stateNS.getGrandTotalPointer() + statePP.getGrandTotalPointer() +
                                     statePHG.getGrandTotalPointer() + statePTR.getGrandTotalPointer() + statePR.getGrandTotalPointer() +
                                     stateSLG.getGrandTotalPointer() + stateJH.getGrandTotalPointer() + stateKD.getGrandTotalPointer() +
