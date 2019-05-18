@@ -8,16 +8,32 @@ import org.jsoup.nodes.Element;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create GetStateData class implements with Callable to call the getExistTableLinkList from ResultStateStatistic class
+ * GetStateData class uses to get total players for each state by category from current validTableLink.
+ */
 public class GetStateData implements Callable {
 
     private String link,cat;
     private int kl,ns,pp,pahang,ptrjaya,perak,selangor,johor,kedah,sarawak,sabah,melaka,kelantan;
     private static Vector<Pair<Integer,String>> subTotal = new Vector<>();
 
+      /**
+     * This constructs a get state data with a specified link (validTableLink)
+     * @param link an initial validTableLink
+     */
     public GetStateData(String link){
         this.link=link;
     }
-
+    
+    /**
+     * get total players for each state by category from getTwo method
+     * @return subTotal with call() method
+     * for return the whole value to ResultStateStatistic class.
+     */
     @Override
     public Vector<Pair<Integer,String>> call() {
         try {
@@ -55,6 +71,11 @@ public class GetStateData implements Callable {
         return subTotal;
     }
 
+      /**
+     * get total points for each state by category from current validTableLink
+     * @param url is validTableLink
+     * @return current total points for each state and category in Pair format.
+     */
     public Pair[] getTwo(String url) {
 
         Document doc;
