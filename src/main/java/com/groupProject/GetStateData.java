@@ -9,11 +9,11 @@ import java.util.Vector;
 import java.util.concurrent.Callable;
 
 /**
+ * Create GetStateData class implements with Callable to call the getExistTableLinkList
+ * GetStateData class uses to get total players for each state by category from current validTableLink.
  * @author Liew Sin Hui
  * @version 1.0
  * @since 2019-04-19
- * Create GetStateData class implements with Callable to call the getExistTableLinkList from ResultStateStatistic class
- * GetStateData class uses to get total players for each state by category from current validTableLink.
  */
 public class GetStateData implements Callable {
 
