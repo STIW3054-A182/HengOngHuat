@@ -3,10 +3,10 @@ package com.groupProject;
 import java.util.Vector;
 
 /**
+ * CalculationState class uses to count the total players for each state.
  * @author Liew Sin Hui
  * @version 1.0
  * @since 2019-04-19
- * CalculationState class uses to count the total players for each state.
  */
 public class CalculationState {
 
