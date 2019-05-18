@@ -9,11 +9,11 @@ import java.util.Vector;
 import java.util.concurrent.Callable;
 
 /**
+ * Create GetPointerData class implements with Callable to call the getExistTableLinkList
+ * GetPointerData class uses to get total points for each state by category from current validTableLink.
  * @author Liew Sin Hui
  * @version 1.0
  * @since 2019-04-19
- * Create GetPointerData class implements with Callable to call the getExistTableLinkList from ResultPointerStatistic class
- * GetPointerData class uses to get total points for each state by category from current validTableLink.
  */
 
 public class GetPointerData implements Callable {
