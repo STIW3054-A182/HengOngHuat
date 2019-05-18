@@ -8,16 +8,33 @@ import org.jsoup.nodes.Element;
 import java.util.Vector;
 import java.util.concurrent.Callable;
 
+/**
+ * @author Liew Sin Hui
+ * @version 1.0
+ * @since 2019-04-19
+ * Create GetPointerData class implements with Callable to call the getExistTableLinkList from ResultPointerStatistic class
+ * GetPointerData class uses to get total points for each state by category from current validTableLink.
+ */
+
 public class GetPointerData implements Callable {
     private String link, cat;
     private double totalPointerKL, totalPointerNS,totalPointerPP,totalPointerPAHANG,totalPointerPTRJAYA,totalPointerPERAK,totalPointerSELANGOR,
             totalPointerJOHOR, totalPointerKEDAH, totalPointerSRW,totalPointerSB,totalPointerMLK,totalPointerKLT;
     private static Vector<Pair<Double,String>> subTotal = new Vector<>();
-
+    
+    /**
+     * This constructs a get pointer data with a specified link (validTableLink)
+     * @param link an initial validTableLink
+     */
     public GetPointerData(String link) {
         this.link = link;
     }
-
+    
+    /**
+     * get total points for each state by category from getTwo method
+     * @return subTotal with call() method
+     * for return the whole value to ResultPointerStatistic class.
+     */
     @Override
     public Vector<Pair<Double,String>> call() {
         try {
@@ -57,6 +74,11 @@ public class GetPointerData implements Callable {
         return subTotal;
     }
 
+      /**
+     * get total points for each state by category from current validTableLink
+     * @param url is validTableLink
+     * @return current total points for each state and category in Pair format.
+     */
     protected Pair[] getTwo(String url) {
 
         Document doc;
