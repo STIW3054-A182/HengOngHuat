@@ -5,7 +5,8 @@ import java.io.IOException;
 import java.util.Properties;
 
 public class MainClass {
-    public static void main (String[] args) throws IOException {
+    @SuppressWarnings("resource")
+	public static void main (String[] args) throws IOException {
 
         String path, fileName, filePath;
         PropertyFileWriting obj = new PropertyFileWriting();
@@ -42,7 +43,7 @@ public class MainClass {
             e.printStackTrace();
         }
 
-        System.out.println("\n\n********************************** DISPLAY ALL PLAYERS FROM KEDAH *********************************");
+        System.out.println("\n\n******************************* DISPLAY ALL PLAYERS FROM KEDAH *******************************");
         ResultKedahPlayer kedahPlayers = new ResultKedahPlayer();
         Thread t3 = new Thread(kedahPlayers);
         t3.start();

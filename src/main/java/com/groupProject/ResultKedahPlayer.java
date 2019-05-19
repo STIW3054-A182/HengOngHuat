@@ -1,8 +1,10 @@
 package com.groupProject;
 
 import java.util.Vector;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.FutureTask;
 
 /**
  * @author Lim Xin Yi
@@ -41,8 +43,14 @@ public class ResultKedahPlayer extends ValidTableLink implements Runnable {
 
         for (int z = 0; z < getExistTableList().size(); z++) {
             String [] tableLink2 = getExistTableLinkList();
-            Thread myThread = new Thread(new KedahPlayers(tableLink2[z]));
-            service.execute(myThread);
+            KedahPlayers kp = new KedahPlayers(tableLink2[z]);
+            FutureTask<String> future;
+            future = (FutureTask<String>) service.submit(kp);
+            try {
+                future.get();
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
         }
         service.shutdown();
     }

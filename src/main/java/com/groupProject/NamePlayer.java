@@ -8,7 +8,7 @@ import java.util.Properties;
 import java.util.concurrent.Callable;
 
 
-public class NamePlayer extends CheckValidTable implements Callable {
+public class NamePlayer extends PropertyFileWriting implements Callable {
 
     private String link;
 

@@ -8,7 +8,7 @@ import org.jsoup.select.Elements;
 import java.util.Properties;
 import java.util.concurrent.Callable;
 
-public class Top3Players implements Callable {
+public class Top3Players extends PropertyFileWriting implements Callable {
 
     private String link;
 
