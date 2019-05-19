@@ -1,0 +1,22 @@
+Sun May 19 22:22:35 SGT 2019	pool-1-thread-4 --> http://chess-results.coom (not exist)
+Execution time in milliseconds: 7
+Sun May 19 22:22:36 SGT 2019	pool-1-thread-2 --> http://chess-results.my (not exist)
+Execution time in milliseconds: 5
+Sun May 19 22:22:41 SGT 2019	pool-1-thread-2 --> http://chess-results.coom (not exist)
+Execution time in milliseconds: 1
+Sun May 19 22:22:42 SGT 2019	pool-1-thread-4 --> http://chess-results.my (not exist)
+Execution time in milliseconds: 0
+Sun May 19 22:22:44 SGT 2019	pool-2-thread-3 --> http://chess-results.com/tnr424276.aspx?lan=1&art=1&rd=8 (not exist player)
+Execution time in milliseconds: 265
+Sun May 19 22:22:44 SGT 2019	pool-2-thread-4 --> http://chess-results.com/tnr424277.aspx?lan=1&art=1&rd=8 (not exist player)
+Execution time in milliseconds: 304
+Sun May 19 22:22:45 SGT 2019	pool-2-thread-4 --> http://chess-results.com/tnr424280.aspx?lan=1&art=1&rd=15 (not exist player)
+Execution time in milliseconds: 287
+Sun May 19 22:22:46 SGT 2019	pool-2-thread-3 --> http://chess-results.com/tnr424283.aspx?lan=1&art=1&rd=8 (not exist player)
+Execution time in milliseconds: 268
+Sun May 19 22:22:46 SGT 2019	pool-2-thread-4 --> http://chess-results.com/tnr424284.aspx?lan=1&art=1&rd=8 (not exist player)
+Execution time in milliseconds: 252
+Sun May 19 22:22:47 SGT 2019	pool-2-thread-4 --> http://chess-results.com/tnr424286.aspx?lan=1&art=1&rd=17 (not exist player)
+Execution time in milliseconds: 244
+Sun May 19 22:22:48 SGT 2019	pool-2-thread-1 --> http://chess-results.com/tnr424290.aspx?lan=1&art=1&rd=17 (not exist player)
+Execution time in milliseconds: 239
