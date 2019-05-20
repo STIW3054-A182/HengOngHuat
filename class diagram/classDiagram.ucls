@@ -1,173 +1,173 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
-  realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="com.groupProject.NamePlayer" project="GroupProject_A182" 
-    file="/GroupProject_A182/src/main/java/com/groupProject/NamePlayer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="197" y="434"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="2" language="java" name="com.groupProject.ResultTop3Player" project="GroupProject_A182" 
+<class-diagram version="1.2.3" icons="true" automaticImage="PNG" always-add-relationships="true" generalizations="true" 
+  realizations="true" associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="com.groupProject.ResultTop3Player" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ResultTop3Player.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="292" y="674"/>    
+    <position height="117" width="338" x="1556" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="com.groupProject.PropertyFileWriting" project="GroupProject_A182" 
+  <class id="2" language="java" name="com.groupProject.PropertyFileWriting" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/PropertyFileWriting.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="150" y="53"/>    
+    <position height="99" width="150" x="2748" y="1569"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="com.groupProject.CalculationState" project="GroupProject_A182" 
+  <class id="3" language="java" name="com.groupProject.CalculationState" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/CalculationState.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="364" y="188"/>    
+    <position height="369" width="199" x="2391" y="1124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="com.groupProject.ResultCountPlayer" project="GroupProject_A182" 
+  <class id="4" language="java" name="com.groupProject.ResultCountPlayer" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ResultCountPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="645" y="805"/>    
+    <position height="153" width="343" x="777" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="com.groupProject.GetStateData" project="GroupProject_A182" 
+  <class id="5" language="java" name="com.groupProject.GetStateData" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/GetStateData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="798" y="206"/>    
+    <position height="405" width="209" x="2630" y="1124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="com.groupProject.CheckValidTable" project="GroupProject_A182" 
+  <class id="6" language="java" name="com.groupProject.CheckValidTable" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/CheckValidTable.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="579" y="89"/>    
+    <position height="171" width="150" x="1934" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="com.groupProject.ValidLink" project="GroupProject_A182" 
+  <class id="7" language="java" name="com.groupProject.ValidLink" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ValidLink.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1887" y="380"/>    
+    <position height="243" width="185" x="1781" y="59"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="9" language="java" name="com.groupProject.Top3Players" project="GroupProject_A182" 
+  <class id="8" language="java" name="com.groupProject.Top3Players" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/Top3Players.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="79" y="283"/>    
+    <position height="117" width="121" x="1556" y="1708"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="com.groupProject.MainClass" project="GroupProject_A182" 
+  <class id="9" language="java" name="com.groupProject.MainClass" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/MainClass.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="999" y="53"/>    
+    <position height="99" width="113" x="1987" y="-80"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="11" language="java" name="com.groupProject.CalculationPoints" project="GroupProject_A182" 
+  <class id="10" language="java" name="com.groupProject.CalculationPoints" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/CalculationPoints.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1212" y="188"/>    
+    <position height="369" width="232" x="1024" y="1124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="12" language="java" name="com.groupProject.ResultNamePlayer" project="GroupProject_A182" 
+  <class id="11" language="java" name="com.groupProject.ResultNamePlayer" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ResultNamePlayer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1020" y="830"/>    
+    <position height="117" width="342" x="2919" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="13" language="java" name="com.groupProject.CheckUrls" project="GroupProject_A182" 
+  <class id="12" language="java" name="com.groupProject.CheckUrls" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/CheckUrls.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1437" y="143"/>    
+    <position height="279" width="138" x="1603" y="342"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="com.groupProject.GetPointerData" project="GroupProject_A182" 
+  <class id="13" language="java" name="com.groupProject.GetPointerData" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/GetPointerData.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1651" y="206"/>    
+    <position height="405" width="210" x="1296" y="1124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="15" language="java" name="com.groupProject.ResultPointerStatistic" project="GroupProject_A182" 
+  <class id="14" language="java" name="com.groupProject.ResultPointerStatistic" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ResultPointerStatistic.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1400" y="950"/>    
+    <position height="423" width="356" x="1160" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="16" language="java" name="com.groupProject.ValidTableLink" project="GroupProject_A182" 
+  <class id="15" language="java" name="com.groupProject.ValidTableLink" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ValidTableLink.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1401" y="565"/>    
+    <position height="189" width="322" x="1781" y="342"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="17" language="java" name="com.groupProject.KedahPlayers" project="GroupProject_A182" 
+  <class id="16" language="java" name="com.groupProject.KedahPlayers" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/KedahPlayers.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="568" y="516"/>    
+    <position height="135" width="129" x="2124" y="1124"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="com.groupProject.ResultKedahPlayer" project="GroupProject_A182" 
+  <class id="17" language="java" name="com.groupProject.ResultKedahPlayer" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ResultKedahPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1788" y="845"/>    
+    <position height="117" width="346" x="2124" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="19" language="java" name="com.groupProject.CountPlayer" project="GroupProject_A182" 
+  <class id="18" language="java" name="com.groupProject.CountPlayer" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/CountPlayer.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1870" y="116"/>    
+    <position height="225" width="149" x="777" y="1124"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="com.groupProject.NamePlayer" project="GroupProject_A182" 
+    file="/GroupProject_A182/src/main/java/com/groupProject/NamePlayer.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="119" x="2919" y="1708"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -177,53 +177,154 @@
   <class id="20" language="java" name="com.groupProject.ResultStateStatistic" project="GroupProject_A182" 
     file="/GroupProject_A182/src/main/java/com/groupProject/ResultStateStatistic.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2150" y="774"/>    
+    <position height="423" width="348" x="2510" y="661"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <generalization id="21">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="22">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
+  <dependency id="21">    
+    <bendpoint x="2888" y="59"/>    
+    <bendpoint x="2888" y="342"/>    
+    <bendpoint x="2888" y="661"/>    
+    <bendpoint x="2888" y="1124"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="22">    
+    <end type="SOURCE" refId="15"/>    
+    <end type="TARGET" refId="6"/>  
+  </dependency>  
   <generalization id="23">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="16"/>  
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="15"/>  
   </generalization>  
   <generalization id="24">    
-    <end type="SOURCE" refId="16"/>    
-    <end type="TARGET" refId="8"/>  
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="2"/>  
   </generalization>  
-  <generalization id="25">    
+  <dependency id="25">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="2"/>  
+  </dependency>  
+  <dependency id="26">    
+    <bendpoint x="2909" y="59"/>    
+    <bendpoint x="2909" y="342"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="11"/>  
+  </dependency>  
+  <dependency id="27">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="10"/>  
+  </dependency>  
+  <generalization id="28">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <dependency id="29">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="5"/>  
+  </dependency>  
+  <generalization id="30">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <dependency id="31">    
+    <bendpoint x="1565" y="1124"/>    
+    <bendpoint x="1565" y="1569"/>    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <dependency id="32">    
+    <bendpoint x="1572" y="59"/>    
+    <bendpoint x="1572" y="342"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="1"/>  
+  </dependency>  
+  <dependency id="33">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="13"/>  
+  </dependency>  
+  <dependency id="34">    
     <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="16"/>  
+  </dependency>  
+  <dependency id="35">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="3"/>  
+  </dependency>  
+  <dependency id="36">    
+    <bendpoint x="2928" y="1124"/>    
+    <bendpoint x="2928" y="1569"/>    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="19"/>  
+  </dependency>  
+  <dependency id="37">    
+    <bendpoint x="2257" y="59"/>    
+    <bendpoint x="2257" y="342"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="20"/>  
+  </dependency>  
+  <dependency id="38">    
+    <bendpoint x="1391" y="59"/>    
+    <bendpoint x="1391" y="342"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="4"/>  
+  </dependency>  
+  <generalization id="39">    
+    <end type="SOURCE" refId="15"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="27">    
-    <end type="SOURCE" refId="15"/>    
-    <end type="TARGET" refId="16"/>  
-  </generalization>  
-  <generalization id="28">    
+  <generalization id="40">    
     <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="16"/>  
+    <end type="TARGET" refId="15"/>  
   </generalization>  
-  <generalization id="29">    
-    <end type="SOURCE" refId="18"/>    
-    <end type="TARGET" refId="16"/>  
+  <generalization id="41">    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="15"/>  
   </generalization>  
-  <generalization id="30">    
+  <generalization id="42">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="15"/>  
+  </generalization>  
+  <dependency id="43">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="12"/>  
+  </dependency>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="2"/>  
+  </generalization>  
+  <dependency id="45">    
+    <bendpoint x="2133" y="59"/>    
+    <bendpoint x="2133" y="342"/>    
     <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="3"/>  
+    <end type="TARGET" refId="17"/>  
+  </dependency>  
+  <dependency id="46">    
+    <bendpoint x="1551" y="59"/>    
+    <bendpoint x="1551" y="342"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="14"/>  
+  </dependency>  
+  <dependency id="47">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </dependency>  
+  <dependency id="48">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="7"/>  
+  </dependency>  
+  <generalization id="49">    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
+  <dependency id="50">    
+    <bendpoint x="1996" y="59"/>    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="15"/>  
+  </dependency>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
