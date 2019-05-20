@@ -10,6 +10,7 @@
 |  5 | Liew Sin Hui   |   254716  |  Member  |
 |  6 | Tan Yu Jia     |   255045  |  Member  |
 
+
 # 2. Introduction
 We are required to develop a real-time system using the Java programming language (Maven).
 The system should be able to:
@@ -20,6 +21,7 @@ The system should be able to:
 - Display all TOP 3 players from each category
 - Count the winning points
 - Display a player result
+
 
 # 3. Table of Contents
 | NO | CLASS                  | DESCRIPTION                                                                                                                                         | LINK                                                                                                                             |
